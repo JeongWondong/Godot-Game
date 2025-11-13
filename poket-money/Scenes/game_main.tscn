@@ -1,0 +1,594 @@
+[gd_scene load_steps=16 format=3 uid="uid://b5qq1u0xuli4u"]
+
+[ext_resource type="FontFile" uid="uid://m5iv4ymu86ip" path="res://Font/ari_w9500/ari-w9500-bold.ttf" id="1_h337q"]
+[ext_resource type="Script" uid="uid://cahrtaqw8d4y4" path="res://Script/game_main.gd" id="1_y0gf2"]
+[ext_resource type="FontFile" uid="uid://ddidns31tnnnh" path="res://Font/DungGeunMo.ttf" id="2_6n8b6"]
+[ext_resource type="Texture2D" uid="uid://1miah8ftkmg7" path="res://Picture/Icons/news_icon_48.png" id="4_ek0ft"]
+[ext_resource type="Texture2D" uid="uid://oxsjr0cg6jdl" path="res://Picture/Icons/tutorial_icon_48.png" id="5_12ds4"]
+[ext_resource type="Texture2D" uid="uid://ii0fy7qfswl" path="res://Picture/Icons/hint_icon_48.png" id="5_blpvf"]
+[ext_resource type="Texture2D" uid="uid://mgr164jfddky" path="res://Picture/Icons/setting_icon_48.png" id="7_ikmlx"]
+[ext_resource type="Texture2D" uid="uid://wdc1pojjym7s" path="res://Picture/Icons/money_icon_48.png" id="7_xe1id"]
+[ext_resource type="Texture2D" uid="uid://dvsn5xagvpuit" path="res://Picture/Icons/watch_icon_48.png" id="9_xe1id"]
+[ext_resource type="FontFile" uid="uid://c4yuq2jmpx3ki" path="res://Font/darkbyte/DarkByte.ttf" id="10_2b18w"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2b18w"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(1, 1, 1, 0.6)
+shadow_size = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xe1id"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(1, 1, 1, 0.6)
+shadow_size = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2sb4r"]
+bg_color = Color(0.9254902, 0.3254902, 0.3254902, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_smq76"]
+bg_color = Color(0.14406255, 0.14406255, 0.14406249, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(1, 1, 1, 0.6)
+shadow_size = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r64ao"]
+bg_color = Color(0.06469653, 0.06469653, 0.06469653, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="GameMain" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_y0gf2")
+
+[node name="Background" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Tutorial" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Tutorial"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.29803923)
+
+[node name="Tutorial_Overlay" type="Control" parent="Tutorial"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Panel" type="Panel" parent="Tutorial/Tutorial_Overlay"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -455.0
+offset_top = -236.0
+offset_right = 455.0
+offset_bottom = 236.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2b18w")
+
+[node name="Title" type="Label" parent="Tutorial/Tutorial_Overlay/Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 21.0
+offset_bottom = 62.0
+grow_horizontal = 2
+size_flags_vertical = 2
+theme_override_fonts/font = ExtResource("1_h337q")
+theme_override_font_sizes/font_size = 32
+text = "Tutorial"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sub_title_left" type="Label" parent="Tutorial/Tutorial_Overlay/Panel"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_top = 65.0
+offset_right = 446.0
+offset_bottom = -378.0
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("2_6n8b6")
+theme_override_font_sizes/font_size = 24
+text = "게임 목표"
+horizontal_alignment = 1
+
+[node name="Text_left" type="Label" parent="Tutorial/Tutorial_Overlay/Panel/Sub_title_left"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -2.1550002
+anchor_bottom = 14.000001
+offset_left = 36.0
+offset_top = 233.49501
+offset_right = 446.0
+offset_bottom = -179.00003
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("2_6n8b6")
+theme_override_font_sizes/font_size = 20
+text = "여러분들이 가진 정보를 바탕으로 주식에
+투자하여 부자가 되어보십시오."
+horizontal_alignment = 1
+
+[node name="Sub_title2_right" type="Label" parent="Tutorial/Tutorial_Overlay/Panel"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -451.0
+offset_top = 63.0
+offset_bottom = -380.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("2_6n8b6")
+theme_override_font_sizes/font_size = 24
+text = "진행 방식"
+horizontal_alignment = 1
+
+[node name="Text_right" type="Label" parent="Tutorial/Tutorial_Overlay/Panel/Sub_title2_right"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 14.103001
+offset_left = -406.0
+offset_top = 47.0
+offset_bottom = -53.98703
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("2_6n8b6")
+theme_override_font_sizes/font_size = 16
+text = "- 게임을 시작하면 초기 자본과 포인트를 지급
+  받습니다.
+
+- 뉴스를 통해 그 당시의 정보를 바탕으로 어디에
+  자본을 투자할지 결정하세요.
+
+- 더 좋은 정보를 얻고 싶다면 '힌트'를 사용하시면
+  됩니다.
+  (힌트는 돈으로 구매가 가능합니다.)
+
+- 원하는 기업에 투자를 해서 자본을 불려보세요.
+
+- 모든 턴이 끝났을 때 자신이 벌어들인 돈을
+  확인하고 랭킹을 통해 얼마나 부자가 되었는지
+  확인해보세요."
+
+[node name="Button" type="Button" parent="Tutorial/Tutorial_Overlay/Panel"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 381.0
+offset_top = -67.0
+offset_right = -381.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_hover_color = Color(0.9411765, 0.9019608, 0.54901963, 1)
+theme_override_fonts/font = ExtResource("1_h337q")
+theme_override_font_sizes/font_size = 20
+text = "OK !"
+
+[node name="Buttons_Container" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 1143.0
+offset_bottom = 110.0
+
+[node name="News_button" type="Button" parent="Buttons_Container"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.01
+anchor_bottom = 0.5
+offset_top = -50.0
+offset_right = -1088.33
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_hover_color = Color(0.9411765, 0.9019608, 0.54901963, 1)
+theme_override_fonts/font = ExtResource("1_h337q")
+theme_override_font_sizes/font_size = 14
+text = "News"
+icon = ExtResource("4_ek0ft")
+icon_alignment = 1
+vertical_icon_alignment = 0
+
+[node name="Tutorial_button" type="Button" parent="Buttons_Container"]
+layout_mode = 0
+offset_left = 71.0
+offset_right = 135.0
+offset_bottom = 100.0
+theme_override_colors/font_hover_color = Color(0.9411765, 0.9019608, 0.54901963, 1)
+theme_override_fonts/font = ExtResource("1_h337q")
+theme_override_font_sizes/font_size = 14
+text = "Tutorial"
+icon = ExtResource("5_12ds4")
+icon_alignment = 1
+vertical_icon_alignment = 0
+
+[node name="Hint_button" type="Button" parent="Buttons_Container"]
+layout_mode = 0
+offset_left = 150.0
+offset_right = 206.0
+offset_bottom = 100.0
+theme_override_colors/font_hover_color = Color(0.9411765, 0.9019608, 0.54901963, 1)
+theme_override_fonts/font = ExtResource("1_h337q")
+theme_override_font_sizes/font_size = 14
+text = "Hint"
+icon = ExtResource("5_blpvf")
+icon_alignment = 1
+vertical_icon_alignment = 0
+
+[node name="Money_button" type="Button" parent="Buttons_Container"]
+layout_mode = 0
+offset_left = 221.0
+offset_right = 277.0
+offset_bottom = 100.0
+theme_override_colors/font_hover_color = Color(0.9411765, 0.9019608, 0.54901963, 1)
+theme_override_fonts/font = ExtResource("1_h337q")
+theme_override_font_sizes/font_size = 14
+text = "Money"
+icon = ExtResource("7_xe1id")
+icon_alignment = 1
+vertical_icon_alignment = 0
+
+[node name="Magam_button" type="Button" parent="Buttons_Container"]
+layout_mode = 0
+offset_left = 1050.0
+offset_right = 1131.0
+offset_bottom = 100.0
+theme_override_colors/font_hover_color = Color(0.9411765, 0.9019608, 0.54901963, 1)
+theme_override_fonts/font = ExtResource("1_h337q")
+theme_override_font_sizes/font_size = 14
+text = "Next Turn"
+icon = ExtResource("9_xe1id")
+icon_alignment = 1
+vertical_icon_alignment = 0
+
+[node name="Setting_button" type="Button" parent="Buttons_Container"]
+layout_mode = 0
+offset_left = 289.0
+offset_right = 350.0
+offset_bottom = 100.0
+theme_override_colors/font_hover_color = Color(0.9411765, 0.9019608, 0.54901963, 1)
+theme_override_fonts/font = ExtResource("1_h337q")
+theme_override_font_sizes/font_size = 14
+text = "Setting"
+icon = ExtResource("7_ikmlx")
+icon_alignment = 1
+vertical_icon_alignment = 0
+
+[node name="Company_Container" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.009000001
+anchor_right = 0.13900001
+anchor_bottom = 1.0
+offset_left = -0.36800098
+offset_top = 120.0
+offset_right = 149.87198
+offset_bottom = -12.0
+grow_vertical = 2
+
+[node name="Company" type="Label" parent="Company_Container"]
+layout_mode = 0
+offset_right = 300.0
+offset_bottom = 32.0
+theme_override_fonts/font = ExtResource("1_h337q")
+theme_override_font_sizes/font_size = 24
+text = "Company"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Company_list_1" type="Button" parent="Company_Container"]
+layout_mode = 0
+offset_top = 42.0
+offset_right = 300.0
+offset_bottom = 69.0
+theme_override_colors/font_hover_pressed_color = Color(0.9411765, 0.9019608, 0.54901963, 1)
+theme_override_fonts/font = ExtResource("2_6n8b6")
+theme_override_font_sizes/font_size = 18
+text = "컴퍼니 1
+"
+
+[node name="Company_list_2" type="Button" parent="Company_Container"]
+layout_mode = 0
+offset_top = 79.0
+offset_right = 300.0
+offset_bottom = 106.0
+theme_override_colors/font_hover_pressed_color = Color(0.9411765, 0.9019608, 0.54901963, 1)
+theme_override_fonts/font = ExtResource("2_6n8b6")
+theme_override_font_sizes/font_size = 18
+text = "컴퍼니 2"
+
+[node name="Company_list_3" type="Button" parent="Company_Container"]
+layout_mode = 0
+offset_top = 116.0
+offset_right = 300.0
+offset_bottom = 143.0
+theme_override_colors/font_hover_pressed_color = Color(0.9411765, 0.9019608, 0.54901963, 1)
+theme_override_fonts/font = ExtResource("2_6n8b6")
+theme_override_font_sizes/font_size = 18
+text = "컴퍼니 3"
+
+[node name="Company_list_4" type="Button" parent="Company_Container"]
+layout_mode = 0
+offset_top = 153.0
+offset_right = 300.0
+offset_bottom = 180.0
+theme_override_colors/font_hover_pressed_color = Color(0.9411765, 0.9019608, 0.54901963, 1)
+theme_override_fonts/font = ExtResource("2_6n8b6")
+theme_override_font_sizes/font_size = 18
+text = "컴퍼니 4"
+
+[node name="Company_list_5" type="Button" parent="Company_Container"]
+layout_mode = 0
+offset_top = 190.0
+offset_right = 300.0
+offset_bottom = 217.0
+theme_override_colors/font_hover_pressed_color = Color(0.9411765, 0.9019608, 0.54901963, 1)
+theme_override_fonts/font = ExtResource("2_6n8b6")
+theme_override_font_sizes/font_size = 18
+text = "컴퍼니 5"
+
+[node name="Graph_Container" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.63900006
+anchor_top = 0.185
+anchor_right = 1.0
+anchor_bottom = 0.87700003
+offset_left = -406.12805
+offset_top = 0.11999512
+offset_right = -10.0
+offset_bottom = -0.2960205
+
+[node name="Title" type="Label" parent="Graph_Container"]
+layout_mode = 0
+offset_right = 812.0
+offset_bottom = 32.0
+theme_override_fonts/font = ExtResource("1_h337q")
+theme_override_font_sizes/font_size = 24
+text = "Company Graph"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GraphFrame" type="GraphFrame" parent="Graph_Container"]
+layout_mode = 0
+offset_top = 42.0
+offset_right = 812.0
+offset_bottom = 105.0
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.286
+anchor_top = 0.93500006
+anchor_right = 1.0
+anchor_bottom = 0.93500006
+offset_left = 0.5279846
+offset_top = -27.880066
+offset_right = -10.0
+offset_bottom = 28.119934
+theme_override_colors/font_hover_color = Color(0.9411765, 0.9019608, 0.54901963, 1)
+theme_override_fonts/font = ExtResource("2_6n8b6")
+theme_override_font_sizes/font_size = 20
+text = "매수 / 매도"
+
+[node name="Money" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -244.0
+offset_top = -104.0
+offset_right = 244.0
+offset_bottom = 104.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xe1id")
+
+[node name="Label" type="Label" parent="Money"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 55.0
+offset_top = 61.0
+offset_right = -55.0
+offset_bottom = -124.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_6n8b6")
+text = "보유 자금 : "
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Money"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 55.0
+offset_top = 118.0
+offset_right = -55.0
+offset_bottom = -67.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_6n8b6")
+text = "보유 포인트 : "
+vertical_alignment = 1
+
+[node name="Money_cancel_button" type="Button" parent="Money"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.95100003
+anchor_top = 0.125
+anchor_right = 0.95100003
+anchor_bottom = 0.125
+offset_left = -15.088013
+offset_top = -15.0
+offset_right = 14.911987
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_h337q")
+theme_override_styles/normal = SubResource("StyleBoxFlat_2sb4r")
+
+[node name="Money_cancel_label" type="Label" parent="Money/Money_cancel_button"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -9.5
+offset_top = -11.5
+offset_right = 9.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("10_2b18w")
+theme_override_font_sizes/font_size = 20
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Setting_Menu" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -216.0
+offset_right = 150.0
+offset_bottom = 216.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Setting_background" type="Panel" parent="Setting_Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_smq76")
+
+[node name="Setting_title" type="Label" parent="Setting_Menu/Setting_background"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.086
+anchor_right = 0.5
+anchor_bottom = 0.086
+offset_left = -149.0
+offset_top = -16.152
+offset_right = 149.0
+offset_bottom = 6.8479996
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_h337q")
+theme_override_font_sizes/font_size = 24
+text = "Setting"
+horizontal_alignment = 1
+
+[node name="Save_and_exit" type="Button" parent="Setting_Menu/Setting_background"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -108.0
+offset_top = -21.0
+offset_right = 108.0
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_hover_color = Color(0.9411765, 0.9019608, 0.54901963, 1)
+theme_override_fonts/font = ExtResource("2_6n8b6")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_r64ao")
+text = "저장 후 나가기"
+
+[node name="Setting_cancel" type="Button" parent="Setting_Menu/Setting_background"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.88400006
+anchor_right = 0.5
+anchor_bottom = 0.88400006
+offset_left = -108.0
+offset_top = -20.888031
+offset_right = 108.0
+offset_bottom = 21.111969
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_hover_color = Color(0.9411765, 0.9019608, 0.54901963, 1)
+theme_override_fonts/font = ExtResource("2_6n8b6")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_r64ao")
+text = "취소"
+
+[connection signal="pressed" from="Tutorial/Tutorial_Overlay/Panel/Button" to="." method="hide_tutorial"]
+[connection signal="pressed" from="Buttons_Container/Tutorial_button" to="." method="_on_tutorial_button_pressed"]
+[connection signal="pressed" from="Buttons_Container/Money_button" to="." method="_on_money_pressed"]
+[connection signal="pressed" from="Buttons_Container/Setting_button" to="." method="_on_setting_button_pressed"]
+[connection signal="pressed" from="Money/Money_cancel_button" to="." method="_on_money_cancel_button_pressed"]
+[connection signal="pressed" from="Setting_Menu/Setting_background/Save_and_exit" to="." method="_on_save_and_exit_pressed"]
+[connection signal="pressed" from="Setting_Menu/Setting_background/Setting_cancel" to="." method="_on_setting_cancel_pressed"]
