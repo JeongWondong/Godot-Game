@@ -1,10 +1,45 @@
-[gd_scene load_steps=5 format=3 uid="uid://b7wvvfvw3o5c6"]
+[gd_scene load_steps=9 format=3 uid="uid://b7wvvfvw3o5c6"]
 
 [ext_resource type="Script" uid="uid://7qieheau6jrf" path="res://Script/main_menu.gd" id="1_28flt"]
 [ext_resource type="Texture2D" uid="uid://cyvspmkrsma05" path="res://Picture/Main.jpg" id="2_1ehe0"]
 [ext_resource type="FontFile" uid="uid://crdgvfnl061c1" path="res://Font/ari_w9500/ari-w9500-display.ttf" id="2_48xlc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jjgbg"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 2
+shadow_offset = Vector2(4, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ce3w2"]
+content_margin_top = 4.0
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_top = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ehe0"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 2
+shadow_offset = Vector2(4, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n45e2"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_top = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_opfnp"]
 bg_color = Color(1, 1, 1, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
@@ -76,17 +111,25 @@ theme_override_constants/separation = 10
 [node name="Start_Button" type="Button" parent="Button Container"]
 layout_mode = 2
 size_flags_vertical = 3
+focus_mode = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.9411765, 0.9019608, 0.54901963, 1)
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_jjgbg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ce3w2")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1ehe0")
 text = "Start game"
 
 [node name="Exit_Button" type="Button" parent="Button Container"]
 layout_mode = 2
 size_flags_vertical = 3
+focus_mode = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_jjgbg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_n45e2")
+theme_override_styles/hover = SubResource("StyleBoxFlat_opfnp")
 text = "Exit"
 
 [connection signal="pressed" from="Button Container/Start_Button" to="." method="_on_start_button_pressed"]

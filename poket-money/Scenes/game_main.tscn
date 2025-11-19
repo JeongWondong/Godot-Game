@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b5qq1u0xuli4u"]
+[gd_scene load_steps=34 format=3 uid="uid://b5qq1u0xuli4u"]
 
 [ext_resource type="FontFile" uid="uid://m5iv4ymu86ip" path="res://Font/ari_w9500/ari-w9500-bold.ttf" id="1_h337q"]
 [ext_resource type="Script" uid="uid://cahrtaqw8d4y4" path="res://Script/game_main.gd" id="1_y0gf2"]
@@ -19,6 +19,174 @@ corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 shadow_color = Color(1, 1, 1, 0.6)
 shadow_size = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v8ifm"]
+bg_color = Color(0.14509805, 0.14509805, 0.14509805, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(1, 1, 1, 1)
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8v11t"]
+content_margin_top = 1.0
+bg_color = Color(0.14509805, 0.14509805, 0.14509805, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2owle"]
+bg_color = Color(0.14509805, 0.14509805, 0.14509805, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(1, 1, 1, 1)
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x3el2"]
+bg_color = Color(0.14509805, 0.14509805, 0.14509805, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(1, 1, 1, 1)
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6phqs"]
+content_margin_top = 1.0
+bg_color = Color(0.14509805, 0.14509805, 0.14509805, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_isu6c"]
+bg_color = Color(0.14509805, 0.14509805, 0.14509805, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(1, 1, 1, 1)
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_if4i3"]
+bg_color = Color(0.14509805, 0.14509805, 0.14509805, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(1, 1, 1, 1)
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qu2sb"]
+content_margin_top = 1.0
+bg_color = Color(0.14509805, 0.14509805, 0.14509805, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yvspv"]
+bg_color = Color(0.14509805, 0.14509805, 0.14509805, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(1, 1, 1, 1)
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5fbcq"]
+bg_color = Color(0.14509805, 0.14509805, 0.14509805, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(1, 1, 1, 1)
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vhdtc"]
+content_margin_top = 1.0
+bg_color = Color(0.14509805, 0.14509805, 0.14509805, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wwiug"]
+bg_color = Color(0.14509805, 0.14509805, 0.14509805, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(1, 1, 1, 1)
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6p11h"]
+bg_color = Color(0.14509805, 0.14509805, 0.14509805, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(1, 1, 1, 1)
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t7esk"]
+content_margin_top = 1.0
+bg_color = Color(0.14509805, 0.14509805, 0.14509805, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6ykxa"]
+bg_color = Color(0.14509805, 0.14509805, 0.14509805, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(1, 1, 1, 1)
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v8rfb"]
+bg_color = Color(0.14509805, 0.14509805, 0.14509805, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(1, 1, 1, 1)
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ga1gc"]
+content_margin_top = 1.0
+bg_color = Color(0.14509805, 0.14509805, 0.14509805, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7x4lm"]
+bg_color = Color(0.14509805, 0.14509805, 0.14509805, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(1, 1, 1, 1)
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xe1id"]
 bg_color = Color(0, 0, 0, 1)
@@ -70,6 +238,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Tutorial" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="Tutorial"]
 anchors_preset = 15
@@ -217,99 +386,110 @@ theme_override_fonts/font = ExtResource("1_h337q")
 theme_override_font_sizes/font_size = 20
 text = "OK !"
 
-[node name="Buttons_Container" type="Control" parent="."]
-anchors_preset = 0
+[node name="Buttons_Container" type="HBoxContainer" parent="."]
+layout_mode = 0
 offset_left = 10.0
 offset_top = 10.0
 offset_right = 1143.0
 offset_bottom = 110.0
+theme_override_constants/separation = 10
+
+[node name="Panel" type="Panel" parent="Buttons_Container"]
+layout_mode = 2
 
 [node name="News_button" type="Button" parent="Buttons_Container"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.5
-anchor_right = 1.01
-anchor_bottom = 0.5
-offset_top = -50.0
-offset_right = -1088.33
-offset_bottom = 50.0
-grow_horizontal = 2
-grow_vertical = 2
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+focus_mode = 0
 theme_override_colors/font_hover_color = Color(0.9411765, 0.9019608, 0.54901963, 1)
 theme_override_fonts/font = ExtResource("1_h337q")
 theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_v8ifm")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8v11t")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2owle")
 text = "News"
 icon = ExtResource("4_ek0ft")
 icon_alignment = 1
 vertical_icon_alignment = 0
 
 [node name="Tutorial_button" type="Button" parent="Buttons_Container"]
-layout_mode = 0
-offset_left = 71.0
-offset_right = 135.0
-offset_bottom = 100.0
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+focus_mode = 0
 theme_override_colors/font_hover_color = Color(0.9411765, 0.9019608, 0.54901963, 1)
 theme_override_fonts/font = ExtResource("1_h337q")
 theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_x3el2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_6phqs")
+theme_override_styles/hover = SubResource("StyleBoxFlat_isu6c")
 text = "Tutorial"
 icon = ExtResource("5_12ds4")
 icon_alignment = 1
 vertical_icon_alignment = 0
 
 [node name="Hint_button" type="Button" parent="Buttons_Container"]
-layout_mode = 0
-offset_left = 150.0
-offset_right = 206.0
-offset_bottom = 100.0
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+focus_mode = 0
 theme_override_colors/font_hover_color = Color(0.9411765, 0.9019608, 0.54901963, 1)
 theme_override_fonts/font = ExtResource("1_h337q")
 theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_if4i3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_qu2sb")
+theme_override_styles/hover = SubResource("StyleBoxFlat_yvspv")
 text = "Hint"
 icon = ExtResource("5_blpvf")
 icon_alignment = 1
 vertical_icon_alignment = 0
 
 [node name="Money_button" type="Button" parent="Buttons_Container"]
-layout_mode = 0
-offset_left = 221.0
-offset_right = 277.0
-offset_bottom = 100.0
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+focus_mode = 0
 theme_override_colors/font_hover_color = Color(0.9411765, 0.9019608, 0.54901963, 1)
 theme_override_fonts/font = ExtResource("1_h337q")
 theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_5fbcq")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_vhdtc")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wwiug")
 text = "Money"
 icon = ExtResource("7_xe1id")
 icon_alignment = 1
 vertical_icon_alignment = 0
 
-[node name="Magam_button" type="Button" parent="Buttons_Container"]
-layout_mode = 0
-offset_left = 1050.0
-offset_right = 1131.0
-offset_bottom = 100.0
-theme_override_colors/font_hover_color = Color(0.9411765, 0.9019608, 0.54901963, 1)
-theme_override_fonts/font = ExtResource("1_h337q")
-theme_override_font_sizes/font_size = 14
-text = "Next Turn"
-icon = ExtResource("9_xe1id")
-icon_alignment = 1
-vertical_icon_alignment = 0
-
 [node name="Setting_button" type="Button" parent="Buttons_Container"]
-layout_mode = 0
-offset_left = 289.0
-offset_right = 350.0
-offset_bottom = 100.0
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+focus_mode = 0
 theme_override_colors/font_hover_color = Color(0.9411765, 0.9019608, 0.54901963, 1)
 theme_override_fonts/font = ExtResource("1_h337q")
 theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_6p11h")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_t7esk")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6ykxa")
 text = "Setting"
 icon = ExtResource("7_ikmlx")
 icon_alignment = 1
 vertical_icon_alignment = 0
 
-[node name="Company_Container" type="Control" parent="."]
+[node name="Magam_button" type="Button" parent="Buttons_Container"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_hover_color = Color(0.9411765, 0.9019608, 0.54901963, 1)
+theme_override_fonts/font = ExtResource("1_h337q")
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_v8rfb")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ga1gc")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7x4lm")
+text = "Next Turn"
+icon = ExtResource("9_xe1id")
+icon_alignment = 1
+vertical_icon_alignment = 0
+
+[node name="Company_Container" type="VBoxContainer" parent="."]
 layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.009000001
 anchor_right = 0.13900001
 anchor_bottom = 1.0
@@ -318,11 +498,10 @@ offset_top = 120.0
 offset_right = 149.87198
 offset_bottom = -12.0
 grow_vertical = 2
+theme_override_constants/separation = 10
 
 [node name="Company" type="Label" parent="Company_Container"]
-layout_mode = 0
-offset_right = 300.0
-offset_bottom = 32.0
+layout_mode = 2
 theme_override_fonts/font = ExtResource("1_h337q")
 theme_override_font_sizes/font_size = 24
 text = "Company"
@@ -330,10 +509,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Company_list_1" type="Button" parent="Company_Container"]
-layout_mode = 0
-offset_top = 42.0
-offset_right = 300.0
-offset_bottom = 69.0
+layout_mode = 2
 theme_override_colors/font_hover_pressed_color = Color(0.9411765, 0.9019608, 0.54901963, 1)
 theme_override_fonts/font = ExtResource("2_6n8b6")
 theme_override_font_sizes/font_size = 18
@@ -341,47 +517,36 @@ text = "컴퍼니 1
 "
 
 [node name="Company_list_2" type="Button" parent="Company_Container"]
-layout_mode = 0
-offset_top = 79.0
-offset_right = 300.0
-offset_bottom = 106.0
+layout_mode = 2
 theme_override_colors/font_hover_pressed_color = Color(0.9411765, 0.9019608, 0.54901963, 1)
 theme_override_fonts/font = ExtResource("2_6n8b6")
 theme_override_font_sizes/font_size = 18
 text = "컴퍼니 2"
 
 [node name="Company_list_3" type="Button" parent="Company_Container"]
-layout_mode = 0
-offset_top = 116.0
-offset_right = 300.0
-offset_bottom = 143.0
+layout_mode = 2
 theme_override_colors/font_hover_pressed_color = Color(0.9411765, 0.9019608, 0.54901963, 1)
 theme_override_fonts/font = ExtResource("2_6n8b6")
 theme_override_font_sizes/font_size = 18
 text = "컴퍼니 3"
 
 [node name="Company_list_4" type="Button" parent="Company_Container"]
-layout_mode = 0
-offset_top = 153.0
-offset_right = 300.0
-offset_bottom = 180.0
+layout_mode = 2
 theme_override_colors/font_hover_pressed_color = Color(0.9411765, 0.9019608, 0.54901963, 1)
 theme_override_fonts/font = ExtResource("2_6n8b6")
 theme_override_font_sizes/font_size = 18
 text = "컴퍼니 4"
 
 [node name="Company_list_5" type="Button" parent="Company_Container"]
-layout_mode = 0
-offset_top = 190.0
-offset_right = 300.0
-offset_bottom = 217.0
+layout_mode = 2
 theme_override_colors/font_hover_pressed_color = Color(0.9411765, 0.9019608, 0.54901963, 1)
 theme_override_fonts/font = ExtResource("2_6n8b6")
 theme_override_font_sizes/font_size = 18
 text = "컴퍼니 5"
 
-[node name="Graph_Container" type="Control" parent="."]
+[node name="Graph_Container" type="VBoxContainer" parent="."]
 layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.63900006
 anchor_top = 0.185
 anchor_right = 1.0
@@ -390,11 +555,10 @@ offset_left = -406.12805
 offset_top = 0.11999512
 offset_right = -10.0
 offset_bottom = -0.2960205
+theme_override_constants/separation = 10
 
 [node name="Title" type="Label" parent="Graph_Container"]
-layout_mode = 0
-offset_right = 812.0
-offset_bottom = 32.0
+layout_mode = 2
 theme_override_fonts/font = ExtResource("1_h337q")
 theme_override_font_sizes/font_size = 24
 text = "Company Graph"
@@ -402,28 +566,17 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="GraphFrame" type="GraphFrame" parent="Graph_Container"]
-layout_mode = 0
-offset_top = 42.0
-offset_right = 812.0
-offset_bottom = 105.0
+layout_mode = 2
 
-[node name="Button" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.286
-anchor_top = 0.93500006
-anchor_right = 1.0
-anchor_bottom = 0.93500006
-offset_left = 0.5279846
-offset_top = -27.880066
-offset_right = -10.0
-offset_bottom = 28.119934
+[node name="Button" type="Button" parent="Graph_Container"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
 theme_override_colors/font_hover_color = Color(0.9411765, 0.9019608, 0.54901963, 1)
 theme_override_fonts/font = ExtResource("2_6n8b6")
 theme_override_font_sizes/font_size = 20
 text = "매수 / 매도"
 
-[node name="Money" type="Panel" parent="."]
+[node name="Money_Screen" type="Panel" parent="."]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -439,7 +592,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xe1id")
 
-[node name="Label" type="Label" parent="Money"]
+[node name="My_Money" type="Label" parent="Money_Screen"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -455,7 +608,7 @@ theme_override_fonts/font = ExtResource("2_6n8b6")
 text = "보유 자금 : "
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="Money"]
+[node name="My_Point" type="Label" parent="Money_Screen"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -471,7 +624,7 @@ theme_override_fonts/font = ExtResource("2_6n8b6")
 text = "보유 포인트 : "
 vertical_alignment = 1
 
-[node name="Money_cancel_button" type="Button" parent="Money"]
+[node name="Money_cancel_button" type="Button" parent="Money_Screen"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.95100003
@@ -487,7 +640,7 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_h337q")
 theme_override_styles/normal = SubResource("StyleBoxFlat_2sb4r")
 
-[node name="Money_cancel_label" type="Label" parent="Money/Money_cancel_button"]
+[node name="Money_cancel_label" type="Label" parent="Money_Screen/Money_cancel_button"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -587,8 +740,8 @@ text = "취소"
 
 [connection signal="pressed" from="Tutorial/Tutorial_Overlay/Panel/Button" to="." method="hide_tutorial"]
 [connection signal="pressed" from="Buttons_Container/Tutorial_button" to="." method="_on_tutorial_button_pressed"]
-[connection signal="pressed" from="Buttons_Container/Money_button" to="." method="_on_money_pressed"]
+[connection signal="pressed" from="Buttons_Container/Money_button" to="." method="_on_money_button_pressed"]
 [connection signal="pressed" from="Buttons_Container/Setting_button" to="." method="_on_setting_button_pressed"]
-[connection signal="pressed" from="Money/Money_cancel_button" to="." method="_on_money_cancel_button_pressed"]
+[connection signal="pressed" from="Money_Screen/Money_cancel_button" to="." method="_on_money_cancel_button_pressed"]
 [connection signal="pressed" from="Setting_Menu/Setting_background/Save_and_exit" to="." method="_on_save_and_exit_pressed"]
 [connection signal="pressed" from="Setting_Menu/Setting_background/Setting_cancel" to="." method="_on_setting_cancel_pressed"]

@@ -1,11 +1,11 @@
+Panel
+HBoxContainer
+VBoxContainer
 Control
 Button
 Label
-Panel
-VBoxContainer
 GraphFrame
 GraphEdit
-HBoxContainer
 RichTextLabel
 PanelContainer
 Container
