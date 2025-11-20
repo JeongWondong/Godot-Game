@@ -25,9 +25,13 @@ func _on_tutorial_button_pressed() -> void:
 func _on_money_cancel_button_pressed() -> void:
 	$Money_Screen.visible = false
 
-# 보유 자금 화면 활성화
+# 보유 자금 화면 활성화/비활성화
 func _on_money_button_pressed() -> void:
-	$Money_Screen.visible = true
+	if $Money_Screen.visible:
+		$Money_Screen.visible = false
+	else:
+		$Money_Screen.visible = true
+	
 
 
 # Setting 화면 활성화
@@ -41,3 +45,18 @@ func _on_setting_cancel_pressed() -> void:
 # 저장 후 나가기 (저장하는 코드 작성 필요)
 func _on_save_and_exit_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
+
+
+# 뉴스 화면 활성화/비활성화
+func _on_news_button_pressed() -> void:
+	if $News_Container.visible:
+		$News_Container.visible = false
+	else:
+		$News_Container.visible = true
+
+
+# 배경 화면 클릭시 핍업 비활성화
+func _on_screen_off_button_pressed() -> void:
+	$News_Container.visible = false
+	$Money_Screen.visible = false
+	$Setting_Menu.visible = false
