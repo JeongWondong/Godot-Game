@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://b5qq1u0xuli4u"]
+[gd_scene load_steps=41 format=3 uid="uid://b5qq1u0xuli4u"]
 
 [ext_resource type="FontFile" uid="uid://m5iv4ymu86ip" path="res://Font/ari_w9500/ari-w9500-bold.ttf" id="1_h337q"]
 [ext_resource type="Script" uid="uid://cahrtaqw8d4y4" path="res://Script/game_main.gd" id="1_y0gf2"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://wdc1pojjym7s" path="res://Picture/Icons/money_icon_48.png" id="7_xe1id"]
 [ext_resource type="Texture2D" uid="uid://dvsn5xagvpuit" path="res://Picture/Icons/watch_icon_48.png" id="9_xe1id"]
 [ext_resource type="FontFile" uid="uid://c4yuq2jmpx3ki" path="res://Font/darkbyte/DarkByte.ttf" id="10_2b18w"]
+[ext_resource type="PackedScene" uid="uid://ck3dxhdemcgh7" path="res://Scenes/CompanyButton.tscn" id="10_smq76"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ritq7"]
 bg_color = Color(0.21950102, 0.21950102, 0.21950102, 1)
@@ -200,6 +201,13 @@ shadow_color = Color(1, 1, 1, 1)
 shadow_size = 1
 shadow_offset = Vector2(1, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kwklr"]
+bg_color = Color(0.14509805, 0.14509805, 0.14509805, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xe1id"]
 bg_color = Color(0, 0, 0, 1)
 corner_radius_top_left = 20
@@ -248,6 +256,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_y0gf2")
+button_scene = ExtResource("10_smq76")
 
 [node name="Background" type="Panel" parent="."]
 layout_mode = 1
@@ -258,7 +267,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ritq7")
 
-[node name="Screen_Off_Button" type="Button" parent="."]
+[node name="Screen_off_button" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -519,20 +528,20 @@ icon = ExtResource("9_xe1id")
 icon_alignment = 1
 vertical_icon_alignment = 0
 
-[node name="Company_Container" type="VBoxContainer" parent="."]
+[node name="Companys_Container" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.009000001
-anchor_right = 0.13900001
-anchor_bottom = 1.0
+anchor_top = 0.185
+anchor_right = 0.009000001
+anchor_bottom = 0.97400004
 offset_left = -0.36800098
-offset_top = 120.0
-offset_right = 149.87198
-offset_bottom = -12.0
-grow_vertical = 2
+offset_top = 0.11999512
+offset_right = 310.632
+offset_bottom = -0.15203857
 theme_override_constants/separation = 10
 
-[node name="Company" type="Label" parent="Company_Container"]
+[node name="Company" type="Label" parent="Companys_Container"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_h337q")
 theme_override_font_sizes/font_size = 24
@@ -540,41 +549,17 @@ text = "Company"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Company_list_1" type="Button" parent="Company_Container"]
+[node name="Company_list_Container" type="ScrollContainer" parent="Companys_Container"]
 layout_mode = 2
-theme_override_colors/font_hover_pressed_color = Color(0.9411765, 0.9019608, 0.54901963, 1)
-theme_override_fonts/font = ExtResource("2_6n8b6")
-theme_override_font_sizes/font_size = 18
-text = "컴퍼니 1
-"
+size_flags_vertical = 3
 
-[node name="Company_list_2" type="Button" parent="Company_Container"]
+[node name="Company_Container" type="VBoxContainer" parent="Companys_Container/Company_list_Container"]
+custom_minimum_size = Vector2(300, 465)
 layout_mode = 2
-theme_override_colors/font_hover_pressed_color = Color(0.9411765, 0.9019608, 0.54901963, 1)
-theme_override_fonts/font = ExtResource("2_6n8b6")
-theme_override_font_sizes/font_size = 18
-text = "컴퍼니 2"
+theme_override_constants/separation = 10
 
-[node name="Company_list_3" type="Button" parent="Company_Container"]
+[node name="Company_list_1" parent="Companys_Container/Company_list_Container/Company_Container" instance=ExtResource("10_smq76")]
 layout_mode = 2
-theme_override_colors/font_hover_pressed_color = Color(0.9411765, 0.9019608, 0.54901963, 1)
-theme_override_fonts/font = ExtResource("2_6n8b6")
-theme_override_font_sizes/font_size = 18
-text = "컴퍼니 3"
-
-[node name="Company_list_4" type="Button" parent="Company_Container"]
-layout_mode = 2
-theme_override_colors/font_hover_pressed_color = Color(0.9411765, 0.9019608, 0.54901963, 1)
-theme_override_fonts/font = ExtResource("2_6n8b6")
-theme_override_font_sizes/font_size = 18
-text = "컴퍼니 4"
-
-[node name="Company_list_5" type="Button" parent="Company_Container"]
-layout_mode = 2
-theme_override_colors/font_hover_pressed_color = Color(0.9411765, 0.9019608, 0.54901963, 1)
-theme_override_fonts/font = ExtResource("2_6n8b6")
-theme_override_font_sizes/font_size = 18
-text = "컴퍼니 5"
 
 [node name="Graph_Container" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -598,6 +583,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="GraphFrame" type="GraphFrame" parent="Graph_Container"]
+custom_minimum_size = Vector2(0, 400)
 layout_mode = 2
 
 [node name="Button" type="Button" parent="Graph_Container"]
@@ -606,6 +592,7 @@ layout_mode = 2
 theme_override_colors/font_hover_color = Color(0.9411765, 0.9019608, 0.54901963, 1)
 theme_override_fonts/font = ExtResource("2_6n8b6")
 theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_kwklr")
 text = "매수 / 매도"
 
 [node name="Money_Screen" type="Panel" parent="."]
@@ -844,7 +831,7 @@ text = "뉴스 본문"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="pressed" from="Screen_Off_Button" to="." method="_on_screen_off_button_pressed"]
+[connection signal="pressed" from="Screen_off_button" to="." method="_on_screen_off_button_pressed"]
 [connection signal="pressed" from="Tutorial/Tutorial_Overlay/Panel/Button" to="." method="hide_tutorial"]
 [connection signal="pressed" from="Buttons_Container/News_button" to="." method="_on_news_button_pressed"]
 [connection signal="pressed" from="Buttons_Container/Tutorial_button" to="." method="_on_tutorial_button_pressed"]

@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://ck3dxhdemcgh7"]
+
+[ext_resource type="FontFile" uid="uid://ddidns31tnnnh" path="res://Font/DungGeunMo.ttf" id="1_a24qs"]
+[ext_resource type="Script" uid="uid://bgp10idxb2i42" path="res://Script/company_button.gd" id="2_35xtp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mlxa3"]
+bg_color = Color(0.14509805, 0.14509805, 0.14509805, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(1, 1, 1, 1)
+shadow_size = 1
+shadow_offset = Vector2(0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sas81"]
+bg_color = Color(0.14509805, 0.14509805, 0.14509805, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_top = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_35xtp"]
+bg_color = Color(0.18359044, 0.18359044, 0.18359044, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(1, 1, 1, 1)
+shadow_size = 1
+shadow_offset = Vector2(0, 1)
+
+[node name="Company_list_1" type="Button"]
+custom_minimum_size = Vector2(310, 70)
+anchors_preset = -1
+anchor_left = 0.13000001
+anchor_top = 0.054
+anchor_right = 0.13000001
+anchor_bottom = 0.054
+offset_left = -149.76001
+offset_top = -34.992
+offset_right = 150.23999
+offset_bottom = 35.008
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_a24qs")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_mlxa3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_sas81")
+theme_override_styles/hover = SubResource("StyleBoxFlat_35xtp")
+text = "컴퍼니 1
+"
+script = ExtResource("2_35xtp")

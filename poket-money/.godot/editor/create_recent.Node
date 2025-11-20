@@ -1,6 +1,7 @@
+VBoxContainer
+ScrollContainer
 Button
 Label
-VBoxContainer
 Panel
 Control
 HBoxContainer
@@ -11,4 +12,3 @@ PanelContainer
 Container
 ColorRect
 CanvasLayer
-TextureRect

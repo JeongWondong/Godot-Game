@@ -1,3 +1,5 @@
 res://Scenes/main_menu.tscn
 res://Scenes/game_main.tscn
 res://Script/game_main.gd
+res://Scenes/company_button.gd
+res://Scenes/CompanyButton.tscn
