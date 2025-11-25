@@ -1,15 +1,36 @@
 extends Node
 @export var button_scene: PackedScene
 @onready var list_container = $Companys_Container/Company_list_Container/Company_Container
+@onready var http_request = $HTTPRequest
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var db_data = [
-		{"id": 1, "name": "삼성전자", "price": 700000},
-		{"id": 2, "name": "SK하이닉스", "price": 1200000},
-		{"id": 3, "name": "네이버", "price": 200000},
-	]
-	create_company_buttons(db_data)
+	# 응답이 오면 실행할 함수 연결
+	http_request.request_completed.connect(_on_request_completed)
+	
+	# 실제 서버 주소로 요청 보내기(Spring 서버 주소)
+	http_request.request("http://127.0.0.1:8000/api/companies")
+	print("서버에 데이터 요청 중...")
+	
+	#var db_data = [
+		#{"id": 1, "name": "삼성전자", "price": 700000},
+		#{"id": 2, "name": "SK하이닉스", "price": 1200000},
+		#{"id": 3, "name": "네이버", "price": 200000},
+	#]
+	#create_company_buttons(db_data)
+	
+# 서버에서 응답이 왔을 때 실행되는 함수
+func _on_request_completed(result, response_code, headers, body):
+	if response_code == 200: # 성공
+		# 받아온 데이터(body)를 글자 -> JSON으로 변환
+		var json_data = JSON.parse_string(body.get_string_from_utf8())
+		
+		print("서버 응답 데이터 : ", json_data)
+		
+		# 기존에 만든 함수를 그래도 재사용
+		create_company_buttons(json_data)
+	else:
+		print("서버 연결 실패. 에러 코드 : ", response_code)
 	
 # 목록을 생성하는 함수
 func create_company_buttons(company_list):
