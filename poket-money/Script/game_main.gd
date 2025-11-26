@@ -60,9 +60,7 @@ func _on_company_selected(data):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	# 튜토리얼 화면에서 OK 버튼을 눌렀을 때 튜토리얼 화면 비활성화 직접 연결
-	$Tutorial/Tutorial_Overlay/Panel/Button.pressed.connect(hide_tutorial)
-
+	pass
 
 # 튜토리얼 화면 비활성화
 func hide_tutorial() -> void:
@@ -73,7 +71,7 @@ func _on_tutorial_button_pressed() -> void:
 	$Tutorial.visible = true
 
 
-# 보유 자금 화면 비활성화
+# 보유 자금 X 아이콘 클릭시 화면 비활성화
 func _on_money_cancel_button_pressed() -> void:
 	$Money.visible = false
 
@@ -104,13 +102,6 @@ func _on_news_button_pressed() -> void:
 		$News.visible = false
 	else:
 		$News.visible = true
-
-
-# 배경 화면 클릭시 핍업 비활성화
-func _on_screen_off_button_pressed() -> void:
-	$News.visible = false
-	$Money.visible = false
-	$Setting_Menu.visible = false
 
 # 뉴스 배경 클릭시 비활성화
 func _on_news_cancel_button_pressed() -> void:

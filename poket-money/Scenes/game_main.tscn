@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://b5qq1u0xuli4u"]
+[gd_scene load_steps=46 format=3 uid="uid://b5qq1u0xuli4u"]
 
 [ext_resource type="FontFile" uid="uid://m5iv4ymu86ip" path="res://Font/ari_w9500/ari-w9500-bold.ttf" id="1_h337q"]
 [ext_resource type="Script" uid="uid://cahrtaqw8d4y4" path="res://Script/game_main.gd" id="1_y0gf2"]
@@ -14,15 +14,6 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ritq7"]
 bg_color = Color(0.21950102, 0.21950102, 0.21950102, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wsin8"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xcbk5"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oy377"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v8ifm"]
 bg_color = Color(0.14509805, 0.14509805, 0.14509805, 1)
@@ -198,6 +189,55 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
+shadow_color = Color(1, 1, 1, 0.6)
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sx5lm"]
+bg_color = Color(0.14509805, 0.14509805, 0.14509805, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_top = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a6kxu"]
+bg_color = Color(0.14509805, 0.14509805, 0.14509805, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(1, 1, 1, 0.6)
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p76c0"]
+bg_color = Color(0.14509805, 0.14509805, 0.14509805, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(1, 1, 1, 0.6)
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e82n8"]
+bg_color = Color(0.14509805, 0.14509805, 0.14509805, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_top = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h7flw"]
+bg_color = Color(0.14509805, 0.14509805, 0.14509805, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(1, 1, 1, 0.6)
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xe1id"]
 bg_color = Color(0, 0, 0, 1)
@@ -275,17 +315,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ritq7")
-
-[node name="Screen_off_button" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_wsin8")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_xcbk5")
-theme_override_styles/hover = SubResource("StyleBoxFlat_oy377")
 
 [node name="Buttons_Container" type="HBoxContainer" parent="."]
 layout_mode = 0
@@ -446,14 +475,32 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(0, 400)
 layout_mode = 2
 
-[node name="Button" type="Button" parent="Graph_Container"]
-custom_minimum_size = Vector2(0, 60)
+[node name="HBoxContainer" type="HBoxContainer" parent="Graph_Container"]
 layout_mode = 2
+
+[node name="Button" type="Button" parent="Graph_Container/HBoxContainer"]
+custom_minimum_size = Vector2(400, 60)
+layout_mode = 2
+focus_mode = 0
 theme_override_colors/font_hover_color = Color(0.9411765, 0.9019608, 0.54901963, 1)
 theme_override_fonts/font = ExtResource("2_6n8b6")
 theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxFlat_kwklr")
-text = "매수 / 매도"
+theme_override_styles/pressed = SubResource("StyleBoxFlat_sx5lm")
+theme_override_styles/hover = SubResource("StyleBoxFlat_a6kxu")
+text = "매 수"
+
+[node name="Button2" type="Button" parent="Graph_Container/HBoxContainer"]
+custom_minimum_size = Vector2(405, 0)
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_hover_color = Color(0.9411765, 0.9019608, 0.54901963, 1)
+theme_override_fonts/font = ExtResource("2_6n8b6")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_p76c0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_e82n8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h7flw")
+text = "매 도"
 
 [node name="Money" type="CanvasLayer" parent="."]
 visible = false
@@ -888,7 +935,6 @@ theme_override_fonts/font = ExtResource("1_h337q")
 theme_override_font_sizes/font_size = 20
 text = "OK !"
 
-[connection signal="pressed" from="Screen_off_button" to="." method="_on_screen_off_button_pressed"]
 [connection signal="pressed" from="Buttons_Container/News_button" to="." method="_on_news_button_pressed"]
 [connection signal="pressed" from="Buttons_Container/Tutorial_button" to="." method="_on_tutorial_button_pressed"]
 [connection signal="pressed" from="Buttons_Container/Money_button" to="." method="_on_money_button_pressed"]
