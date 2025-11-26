@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://b5qq1u0xuli4u"]
+[gd_scene load_steps=43 format=3 uid="uid://b5qq1u0xuli4u"]
 
 [ext_resource type="FontFile" uid="uid://m5iv4ymu86ip" path="res://Font/ari_w9500/ari-w9500-bold.ttf" id="1_h337q"]
 [ext_resource type="Script" uid="uid://cahrtaqw8d4y4" path="res://Script/game_main.gd" id="1_y0gf2"]
@@ -239,6 +239,12 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mlxa3"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qk1o0"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tspwr"]
 bg_color = Color(0.6872149, 0.68721503, 0.68721485, 1)
@@ -595,8 +601,26 @@ theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxFlat_kwklr")
 text = "매수 / 매도"
 
-[node name="Money_Screen" type="Panel" parent="."]
+[node name="Money" type="CanvasLayer" parent="."]
 visible = false
+
+[node name="ColorRect" type="ColorRect" parent="Money"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.29803923)
+
+[node name="Money_Overlay" type="Control" parent="Money"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Money_Screen" type="Panel" parent="Money/Money_Overlay"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -611,7 +635,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xe1id")
 
-[node name="My_Money" type="Label" parent="Money_Screen"]
+[node name="My_Money" type="Label" parent="Money/Money_Overlay/Money_Screen"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -627,7 +651,7 @@ theme_override_fonts/font = ExtResource("2_6n8b6")
 text = "보유 자금 : "
 vertical_alignment = 1
 
-[node name="My_Point" type="Label" parent="Money_Screen"]
+[node name="My_Point" type="Label" parent="Money/Money_Overlay/Money_Screen"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -643,7 +667,7 @@ theme_override_fonts/font = ExtResource("2_6n8b6")
 text = "보유 포인트 : "
 vertical_alignment = 1
 
-[node name="Money_cancel_button" type="Button" parent="Money_Screen"]
+[node name="Money_cancel_button" type="Button" parent="Money/Money_Overlay/Money_Screen"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.95100003
@@ -659,7 +683,7 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_h337q")
 theme_override_styles/normal = SubResource("StyleBoxFlat_2sb4r")
 
-[node name="Money_cancel_label" type="Label" parent="Money_Screen/Money_cancel_button"]
+[node name="Money_cancel_label" type="Label" parent="Money/Money_Overlay/Money_Screen/Money_cancel_button"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -757,9 +781,27 @@ theme_override_font_sizes/font_size = 18
 theme_override_styles/normal = SubResource("StyleBoxFlat_r64ao")
 text = "취소"
 
-[node name="News_Container" type="Control" parent="."]
-visible = false
-layout_mode = 1
+[node name="News" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="News"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.29803923)
+
+[node name="News_cancel_button" type="Button" parent="News"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_mlxa3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qk1o0")
+
+[node name="News_Container" type="Control" parent="News"]
+layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -772,7 +814,7 @@ offset_bottom = 225.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Newspaper_B" type="Panel" parent="News_Container"]
+[node name="Newspaper_B" type="Panel" parent="News/News_Container"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -786,7 +828,7 @@ grow_vertical = 2
 rotation = 0.08726646
 theme_override_styles/panel = SubResource("StyleBoxFlat_tspwr")
 
-[node name="Newspaper_F" type="Panel" parent="News_Container"]
+[node name="Newspaper_F" type="Panel" parent="News/News_Container"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -795,13 +837,13 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_tspwr")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="News_Container"]
+[node name="VBoxContainer" type="VBoxContainer" parent="News/News_Container"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 theme_override_constants/separation = 10
 
-[node name="Today_News" type="Label" parent="News_Container/VBoxContainer"]
+[node name="Today_News" type="Label" parent="News/News_Container/VBoxContainer"]
 custom_minimum_size = Vector2(772, 100)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.38928628, 0.3892868, 0.38928637, 1)
@@ -811,7 +853,7 @@ text = "TODAY  NEWS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="News_Title" type="Label" parent="News_Container/VBoxContainer"]
+[node name="News_Title" type="Label" parent="News/News_Container/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.3882353, 0.3882353, 0.3882353, 1)
@@ -821,7 +863,7 @@ text = "뉴스 제목"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="News_Text" type="Label" parent="News_Container/VBoxContainer"]
+[node name="News_Text" type="Label" parent="News/News_Container/VBoxContainer"]
 custom_minimum_size = Vector2(0, 280)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.3882353, 0.3882353, 0.3882353, 1)
@@ -837,6 +879,7 @@ vertical_alignment = 1
 [connection signal="pressed" from="Buttons_Container/Tutorial_button" to="." method="_on_tutorial_button_pressed"]
 [connection signal="pressed" from="Buttons_Container/Money_button" to="." method="_on_money_button_pressed"]
 [connection signal="pressed" from="Buttons_Container/Setting_button" to="." method="_on_setting_button_pressed"]
-[connection signal="pressed" from="Money_Screen/Money_cancel_button" to="." method="_on_money_cancel_button_pressed"]
+[connection signal="pressed" from="Money/Money_Overlay/Money_Screen/Money_cancel_button" to="." method="_on_money_cancel_button_pressed"]
 [connection signal="pressed" from="Setting_Menu/Setting_background/Save_and_exit" to="." method="_on_save_and_exit_pressed"]
 [connection signal="pressed" from="Setting_Menu/Setting_background/Setting_cancel" to="." method="_on_setting_cancel_pressed"]
+[connection signal="pressed" from="News/News_cancel_button" to="." method="_on_news_cancel_button_pressed"]
