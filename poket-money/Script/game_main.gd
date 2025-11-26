@@ -112,6 +112,6 @@ func _on_screen_off_button_pressed() -> void:
 	$Money.visible = false
 	$Setting_Menu.visible = false
 
-# 뉴스 배경 클릭시 비활성
+# 뉴스 배경 클릭시 비활성화
 func _on_news_cancel_button_pressed() -> void:
 	$News.visible = false
