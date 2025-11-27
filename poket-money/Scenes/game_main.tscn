@@ -34,7 +34,7 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2owle"]
-bg_color = Color(0.14509805, 0.14509805, 0.14509805, 1)
+bg_color = Color(0.18431373, 0.18431373, 0.18431373, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -62,7 +62,7 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_isu6c"]
-bg_color = Color(0.14509805, 0.14509805, 0.14509805, 1)
+bg_color = Color(0.18431373, 0.18431373, 0.18431373, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -90,7 +90,7 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yvspv"]
-bg_color = Color(0.14509805, 0.14509805, 0.14509805, 1)
+bg_color = Color(0.18431373, 0.18431373, 0.18431373, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -118,7 +118,7 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wwiug"]
-bg_color = Color(0.14509805, 0.14509805, 0.14509805, 1)
+bg_color = Color(0.18431373, 0.18431373, 0.18431373, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -146,7 +146,7 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6ykxa"]
-bg_color = Color(0.14509805, 0.14509805, 0.14509805, 1)
+bg_color = Color(0.18431373, 0.18431373, 0.18431373, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -174,7 +174,7 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7x4lm"]
-bg_color = Color(0.14509805, 0.14509805, 0.14509805, 1)
+bg_color = Color(0.18431373, 0.18431373, 0.18431373, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -202,7 +202,7 @@ corner_radius_bottom_left = 10
 expand_margin_top = 1.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a6kxu"]
-bg_color = Color(0.14509805, 0.14509805, 0.14509805, 1)
+bg_color = Color(0.18431373, 0.18431373, 0.18431373, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -230,7 +230,7 @@ corner_radius_bottom_left = 10
 expand_margin_top = 1.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h7flw"]
-bg_color = Color(0.14509805, 0.14509805, 0.14509805, 1)
+bg_color = Color(0.18431373, 0.18431373, 0.18431373, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -320,7 +320,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_ritq7")
 layout_mode = 0
 offset_left = 10.0
 offset_top = 10.0
-offset_right = 1143.0
+offset_right = 1267.0
 offset_bottom = 110.0
 theme_override_constants/separation = 10
 
@@ -426,7 +426,7 @@ anchor_right = 0.009000001
 anchor_bottom = 0.97400004
 offset_left = -0.36800098
 offset_top = 0.11999512
-offset_right = 310.632
+offset_right = 381.48
 offset_bottom = -0.15203857
 theme_override_constants/separation = 10
 
@@ -453,14 +453,12 @@ layout_mode = 2
 [node name="Graph_Container" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.63900006
-anchor_top = 0.185
 anchor_right = 1.0
-anchor_bottom = 0.87700003
-offset_left = -406.12805
-offset_top = 0.11999512
+anchor_bottom = 1.0
+offset_left = 411.792
+offset_top = 133.31999
 offset_right = -10.0
-offset_bottom = -0.2960205
+offset_bottom = -12.0
 theme_override_constants/separation = 10
 
 [node name="Title" type="Label" parent="Graph_Container"]
@@ -479,7 +477,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Button" type="Button" parent="Graph_Container/HBoxContainer"]
-custom_minimum_size = Vector2(400, 60)
+custom_minimum_size = Vector2(425, 60)
 layout_mode = 2
 focus_mode = 0
 theme_override_colors/font_hover_color = Color(0.9411765, 0.9019608, 0.54901963, 1)
@@ -491,7 +489,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_a6kxu")
 text = "매 수"
 
 [node name="Button2" type="Button" parent="Graph_Container/HBoxContainer"]
-custom_minimum_size = Vector2(405, 0)
+custom_minimum_size = Vector2(425, 0)
 layout_mode = 2
 focus_mode = 0
 theme_override_colors/font_hover_color = Color(0.9411765, 0.9019608, 0.54901963, 1)

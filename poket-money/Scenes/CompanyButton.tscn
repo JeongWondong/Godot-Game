@@ -32,15 +32,15 @@ shadow_size = 1
 shadow_offset = Vector2(0, 1)
 
 [node name="Company_list_1" type="Button"]
-custom_minimum_size = Vector2(310, 70)
+custom_minimum_size = Vector2(380, 70)
 anchors_preset = -1
-anchor_left = 0.13000001
+anchor_left = 0.16100001
 anchor_top = 0.054
-anchor_right = 0.13000001
+anchor_right = 0.16100001
 anchor_bottom = 0.054
-offset_left = -149.76001
+offset_left = -189.44002
 offset_top = -34.992
-offset_right = 150.23999
+offset_right = 110.56
 offset_bottom = 35.008
 focus_mode = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
