@@ -118,6 +118,14 @@ func _on_news_button_pressed() -> void:
 		$News.visible = false
 	else:
 		$News.visible = true
-# 뉴스 배경 클릭시 비활성화
+
+
+# 힌트 상/중/하 선택 화면 활성화
+func _on_hint_button_pressed() -> void:
+	$Hint.visible = true
+
+
+# 배경 클릭시 화면 비활성화
 func _on_news_cancel_button_pressed() -> void:
-	$News.visible = false
+	$News.visible = false # 뉴스 비활성화
+	$Hint.visible = false # 힌트 비활성화

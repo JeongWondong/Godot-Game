@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://b5qq1u0xuli4u"]
+[gd_scene load_steps=54 format=3 uid="uid://b5qq1u0xuli4u"]
 
 [ext_resource type="FontFile" uid="uid://m5iv4ymu86ip" path="res://Font/ari_w9500/ari-w9500-bold.ttf" id="1_h337q"]
 [ext_resource type="Script" uid="uid://cahrtaqw8d4y4" path="res://Script/game_main.gd" id="1_y0gf2"]
@@ -296,6 +296,79 @@ corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 shadow_color = Color(1, 1, 1, 0.6)
 shadow_size = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wsin8"]
+bg_color = Color(0.21960784, 0.21960784, 0.21960784, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(1, 1, 1, 0.6)
+shadow_size = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xcbk5"]
+bg_color = Color(0.14509805, 0.14509805, 0.14509805, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(1, 1, 1, 0.6)
+shadow_size = 1
+shadow_offset = Vector2(4, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oy377"]
+content_margin_top = 4.0
+bg_color = Color(0.14509805, 0.14509805, 0.14509805, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iym0r"]
+bg_color = Color(0.18431373, 0.18431373, 0.18431373, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(1, 1, 1, 0.6)
+shadow_size = 1
+shadow_offset = Vector2(4, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1pqj0"]
+content_margin_top = 4.0
+bg_color = Color(0.14509805, 0.14509805, 0.14509805, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5guu4"]
+bg_color = Color(0.18431373, 0.18431373, 0.18431373, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(1, 1, 1, 0.6)
+shadow_size = 1
+shadow_offset = Vector2(4, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4jqiw"]
+content_margin_top = 4.0
+bg_color = Color(0.14509805, 0.14509805, 0.14509805, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q8px1"]
+bg_color = Color(0.18431373, 0.18431373, 0.18431373, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(1, 1, 1, 0.6)
+shadow_size = 1
+shadow_offset = Vector2(4, 4)
 
 [node name="GameMain" type="Control"]
 layout_mode = 3
@@ -890,16 +963,16 @@ anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 14.103001
 offset_left = -406.0
-offset_top = 47.0
-offset_bottom = -53.98703
+offset_top = 51.0
+offset_right = -22.0
+offset_bottom = -75.98703
 grow_horizontal = 0
 grow_vertical = 2
 size_flags_horizontal = 0
 size_flags_vertical = 6
 theme_override_fonts/font = ExtResource("2_6n8b6")
 theme_override_font_sizes/font_size = 16
-text = "- 게임을 시작하면 초기 자본과 포인트를 지급
-  받습니다.
+text = "- 게임을 시작하면 초기 자본과 포인트를 지급 받습니다.
 
 - 뉴스를 통해 그 당시의 정보를 바탕으로 어디에
   자본을 투자할지 결정하세요.
@@ -913,6 +986,7 @@ text = "- 게임을 시작하면 초기 자본과 포인트를 지급
 - 모든 턴이 끝났을 때 자신이 벌어들인 돈을
   확인하고 랭킹을 통해 얼마나 부자가 되었는지
   확인해보세요."
+vertical_alignment = 1
 
 [node name="Button" type="Button" parent="Tutorial/Tutorial_Overlay/Panel"]
 layout_mode = 1
@@ -931,12 +1005,116 @@ theme_override_fonts/font = ExtResource("1_h337q")
 theme_override_font_sizes/font_size = 20
 text = "OK !"
 
+[node name="Hint" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="Hint"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.29803923)
+
+[node name="News_cancel_button" type="Button" parent="Hint"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_mlxa3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ep5a1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qk1o0")
+
+[node name="Hint_Overlay" type="Control" parent="Hint"]
+layout_mode = 3
+anchor_left = 0.202
+anchor_top = 0.31100002
+anchor_right = 0.79800004
+anchor_bottom = 0.689
+offset_left = 0.44000244
+offset_top = 0.07998657
+offset_right = -0.44006348
+offset_bottom = -0.08001709
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Hint/Hint_Overlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wsin8")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Hint/Hint_Overlay/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 101.0
+offset_top = 23.0
+offset_right = -105.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="Hint/Hint_Overlay/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_h337q")
+theme_override_font_sizes/font_size = 32
+text = "Hint Level"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Hint/Hint_Overlay/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="High_level_button" type="Button" parent="Hint/Hint_Overlay/Panel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_hover_color = Color(0.9411765, 0.9019608, 0.54901963, 1)
+theme_override_fonts/font = ExtResource("1_h337q")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_xcbk5")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_oy377")
+theme_override_styles/hover = SubResource("StyleBoxFlat_iym0r")
+text = "High"
+
+[node name="Middle_level_button2" type="Button" parent="Hint/Hint_Overlay/Panel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_hover_color = Color(0.9411765, 0.9019608, 0.54901963, 1)
+theme_override_fonts/font = ExtResource("1_h337q")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_xcbk5")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1pqj0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5guu4")
+text = "Middle"
+
+[node name="Low_level_button3" type="Button" parent="Hint/Hint_Overlay/Panel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_hover_color = Color(0.9411765, 0.9019608, 0.54901963, 1)
+theme_override_fonts/font = ExtResource("1_h337q")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_xcbk5")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4jqiw")
+theme_override_styles/hover = SubResource("StyleBoxFlat_q8px1")
+text = "Low"
+
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
 
 [node name="MoneyRequest" type="HTTPRequest" parent="."]
 
 [connection signal="pressed" from="Buttons_Container/News_button" to="." method="_on_news_button_pressed"]
 [connection signal="pressed" from="Buttons_Container/Tutorial_button" to="." method="_on_tutorial_button_pressed"]
+[connection signal="pressed" from="Buttons_Container/Hint_button" to="." method="_on_hint_button_pressed"]
 [connection signal="pressed" from="Buttons_Container/Money_button" to="." method="_on_money_button_pressed"]
 [connection signal="pressed" from="Buttons_Container/Setting_button" to="." method="_on_setting_button_pressed"]
 [connection signal="pressed" from="Money/Money_Overlay/Money_Screen/Money_cancel_button" to="." method="_on_money_cancel_button_pressed"]
@@ -944,3 +1122,4 @@ text = "OK !"
 [connection signal="pressed" from="Setting_Menu/Setting_menu_overlay/Setting_background/Setting_cancel" to="." method="_on_setting_cancel_pressed"]
 [connection signal="pressed" from="News/News_cancel_button" to="." method="_on_news_cancel_button_pressed"]
 [connection signal="pressed" from="Tutorial/Tutorial_Overlay/Panel/Button" to="." method="hide_tutorial"]
+[connection signal="pressed" from="Hint/News_cancel_button" to="." method="_on_news_cancel_button_pressed"]
