@@ -2,40 +2,48 @@ extends Node
 @export var button_scene: PackedScene
 @onready var list_container = $Companys_Container/Company_list_Container/Company_Container
 @onready var http_request = $HTTPRequest
-@onready var money_request = $MoneyRequest
+@onready var money_label = $Money/Money_Overlay/Money_Screen/VBoxContainer/MoneyLabel
+@onready var point_label = $Money/Money_Overlay/Money_Screen/VBoxContainer/PointLabel
 
 const BASE_URL = "http://127.0.0.1:8080"
 
+# 자바스크립트에서 Godot을 부를 수 있게 해주는 '콜백' 변수
+var _callback_ref = JavaScriptBridge.create_callback(receive_money_from_js)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	## 응답이 오면 실행할 함수 연결
-	#http_request.request_completed.connect(_on_request_completed)
-	#money_request.request_completed.connect(_on_money_request_completed)
-	#
-	## 실제 서버 주소로 요청 보내기(Spring 서버 주소)
-	#http_request.request(BASE_URL) # 여기 부분을 변경하면 된다.
-	#print("서버에 데이터 요청 중...")
+	# 응답이 오면 실행할 함수 연결
+	http_request.request_completed.connect(_on_request_completed)
 	
-	var db_data = [
-		{"id": 1, "name": "삼성전자", "price": 700000},
-		{"id": 2, "name": "SK하이닉스", "price": 1200000},
-		{"id": 3, "name": "네이버", "price": 200000},
-	]
-	create_company_buttons(db_data)
+	# 웹 환경이라면, 자바스크립트 window 객체에 함수 등록
+	if OS.has_feature('web'):
+		var window = JavaScriptBridge.get_interface("window")
+		# JS에서window.updateGodotMoney(값)을 쓰면 이쪽 함수가 실행됨.
+		window.updateGodotMoney = _callback_ref
 	
-## 서버에서 응답이 왔을 때 실행되는 함수
-#func _on_request_completed(result, response_code, headers, body):
-	#if response_code == 200: # 성공
-		## 받아온 데이터(body)를 글자 -> JSON으로 변환
-		#var json_data = JSON.parse_string(body.get_string_from_utf8())
-		#
-		#print("서버 응답 데이터 : ", json_data)
-		#
-		## 기존에 만든 함수를 그대로 재사용
-		#create_company_buttons(json_data)
-	#else:
-		#print("서버 연결 실패. 에러 코드 : ", response_code)
+	# 실제 서버 주소로 요청 보내기(Spring 서버 주소)
+	http_request.request(BASE_URL) # 여기 부분을 변경하면 된다.
+	print("서버에 데이터 요청 중...")
+	
+	#var db_data = [
+		#{"id": 1, "name": "삼성전자", "price": 700000},
+		#{"id": 2, "name": "SK하이닉스", "price": 1200000},
+		#{"id": 3, "name": "네이버", "price": 200000},
+	#]
+	#create_company_buttons(db_data)
+	
+# 서버에서 응답이 왔을 때 실행되는 함수
+func _on_request_completed(result, response_code, headers, body):
+	if response_code == 200: # 성공
+		# 받아온 데이터(body)를 글자 -> JSON으로 변환
+		var json_data = JSON.parse_string(body.get_string_from_utf8())
+		
+		print("서버 응답 데이터 : ", json_data)
+		
+		# 기존에 만든 함수를 그대로 재사용
+		create_company_buttons(json_data)
+	else:
+		print("서버 연결 실패. 에러 코드 : ", response_code)
 	
 # 목록을 생성하는 함수
 func create_company_buttons(company_list):
@@ -79,26 +87,26 @@ func _on_tutorial_button_pressed() -> void:
 # 보유 자금 X 아이콘 클릭시 화면 비활성화
 func _on_money_cancel_button_pressed() -> void:
 	$Money.visible = false
+
 # 보유 자금 화면 활성화/비활성화
 func _on_money_button_pressed() -> void:
 	$Money.visible = true
-	$Money/Money_Overlay/Money_Screen/VBoxContainer/MoneyLabel.text = "데이터 불러오는 중..."
-	money_request.request(BASE_URL + "/api/my-asset")
-# 서버에서 응답이 왔을 때
-func _on_money_request_completed(result, response_code, headers, body):
-	if response_code == 200:
-		var json = JSON.parse_string(body.get_string_from_utf8())
-		
-		# 서버가 값을 준다고 가정
-		if json:
-			$Money/Money_Overlay/MoneyScreen/VBoxContainer/MoneyLabel.text = "보유 자산 : " + str(json["money"]) + " 원"
-			$Money/Money_Overlay/MoneyScreen/VBoxContainer/PointLabel.text = "보유 포인트 : " + str(json["point"]) + " P"
-		else:
-			$Money/Money_Overlay/MoneyScreen/VBoxContainer/MoneyLabel.text = "데이터 오류"
-	else:
-		print("통신 실패: ", response_code)
-		$Money/Money_Overlay/MoneyScreen/VBoxContainer/MoneyLabel.text = "서버 연결 실패"
+	JavaScriptBridge.eval("getMemberAssetsToGodot()")
 
+	if OS.has_feature('web'):
+		# JS에 있는 requestUserMoney() 함수 실행
+		JavaScriptBridge.eval("requestUserMoney()")
+	else:
+		print("이 기능은 웹 브라우저에서만 작동합니다.")
+
+# 자바스크립트가 데이터를 가져오면 실행되는 함수
+func receive_money_from_js(args):
+	# args는 배열로 들어옵니다. 첫 번째 값이 돈입니다.
+	var user_money = args[0]    
+	print("서버에서 받은 돈: ", user_money)
+
+	# UI 업데이트 (콤마 찍어서 보여주기 등)
+	money_label.text = str(user_money) + " 원"
 
 
 # Setting 화면 활성화

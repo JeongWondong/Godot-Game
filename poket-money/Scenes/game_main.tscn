@@ -1110,8 +1110,6 @@ text = "Low"
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
 
-[node name="MoneyRequest" type="HTTPRequest" parent="."]
-
 [connection signal="pressed" from="Buttons_Container/News_button" to="." method="_on_news_button_pressed"]
 [connection signal="pressed" from="Buttons_Container/Tutorial_button" to="." method="_on_tutorial_button_pressed"]
 [connection signal="pressed" from="Buttons_Container/Hint_button" to="." method="_on_hint_button_pressed"]
