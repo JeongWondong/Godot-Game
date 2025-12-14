@@ -1,5 +1,5 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1765716408
+::res://::1765721798
 export_presets.cfg::TextFile::-1::1764670080::0::1::::<><><>0<>0<><>::
 icon.svg::CompressedTexture2D::8814843782361946568::1764670080::1764670117::1::::<><><>0<>0<>6887b82949b00c1e32efdc7a2c298f6d<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
 saveManager.gd::GDScript::5740248160190596230::1764670080::0::1::::<>Node<><>0<>0<><>::
@@ -24,11 +24,11 @@ news_icon_48.png::CompressedTexture2D::1850168622474662396::1764670080::17646701
 setting_icon_48.png::CompressedTexture2D::855732683138209216::1764670080::1764670117::1::::<><><>0<>0<>8e51eaccc307e3487556c65840daf51f<>res://.godot/imported/setting_icon_48.png-b449a207983d7e93529b45307bfba403.ctex::
 tutorial_icon_48.png::CompressedTexture2D::1031234408907949293::1764670080::1764670117::1::::<><><>0<>0<>32678cf9c822e04518356a7625028cee<>res://.godot/imported/tutorial_icon_48.png-7dba81f40c1099fed2dc7beb802911e1.ctex::
 watch_icon_48.png::CompressedTexture2D::8671230670112511995::1764670080::1764670117::1::::<><><>0<>0<>01502837d6dd16730ada0887f580a84c<>res://.godot/imported/watch_icon_48.png-5278a5699b9930e498d13f7262b2f1e9.ctex::
-::res://Scenes/::1764679988
+::res://Scenes/::1765718549
 CompanyButton.tscn::PackedScene::5532755977614039478::1764670080::0::1::::<><><>0<>0<><>::uid://ddidns31tnnnh::::res://Font/DungGeunMo.ttf<>uid://bgp10idxb2i42::::res://Script/company_button.gd
-game_main.tscn::PackedScene::4526135029584117062::1764679988::0::1::::<><><>0<>0<><>::uid://m5iv4ymu86ip::::res://Font/ari_w9500/ari-w9500-bold.ttf<>uid://cahrtaqw8d4y4::::res://Script/game_main.gd<>uid://ddidns31tnnnh::::res://Font/DungGeunMo.ttf<>uid://1miah8ftkmg7::::res://Picture/Icons/news_icon_48.png<>uid://oxsjr0cg6jdl::::res://Picture/Icons/tutorial_icon_48.png<>uid://ii0fy7qfswl::::res://Picture/Icons/hint_icon_48.png<>uid://mgr164jfddky::::res://Picture/Icons/setting_icon_48.png<>uid://wdc1pojjym7s::::res://Picture/Icons/money_icon_48.png<>uid://dvsn5xagvpuit::::res://Picture/Icons/watch_icon_48.png<>uid://c4yuq2jmpx3ki::::res://Font/darkbyte/DarkByte.ttf<>uid://ck3dxhdemcgh7::::res://Scenes/CompanyButton.tscn
+game_main.tscn::PackedScene::4526135029584117062::1765718549::0::1::::<><><>0<>0<><>::uid://m5iv4ymu86ip::::res://Font/ari_w9500/ari-w9500-bold.ttf<>uid://cahrtaqw8d4y4::::res://Script/game_main.gd<>uid://ddidns31tnnnh::::res://Font/DungGeunMo.ttf<>uid://1miah8ftkmg7::::res://Picture/Icons/news_icon_48.png<>uid://oxsjr0cg6jdl::::res://Picture/Icons/tutorial_icon_48.png<>uid://ii0fy7qfswl::::res://Picture/Icons/hint_icon_48.png<>uid://mgr164jfddky::::res://Picture/Icons/setting_icon_48.png<>uid://wdc1pojjym7s::::res://Picture/Icons/money_icon_48.png<>uid://dvsn5xagvpuit::::res://Picture/Icons/watch_icon_48.png<>uid://c4yuq2jmpx3ki::::res://Font/darkbyte/DarkByte.ttf<>uid://ck3dxhdemcgh7::::res://Scenes/CompanyButton.tscn
 main_menu.tscn::PackedScene::4679192845314776203::1764670080::0::1::::<><><>0<>0<><>::uid://7qieheau6jrf::::res://Script/main_menu.gd<>uid://cyvspmkrsma05::::res://Picture/Main.jpg<>uid://crdgvfnl061c1::::res://Font/ari_w9500/ari-w9500-display.ttf
-::res://Script/::1764679970
+::res://Script/::1765718549
 company_button.gd::GDScript::2840143124360379421::1764670080::0::1::::<>Button<><>0<>0<><>::
-game_main.gd::GDScript::4788358156386544809::1764679970::0::1::::<>Node<><>0<>0<><>::
+game_main.gd::GDScript::4788358156386544809::1765718549::0::1::::<>Node<><>0<>0<><>::
 main_menu.gd::GDScript::2279566293470368803::1764670080::0::1::::<>Control<><>0<>0<><>::
