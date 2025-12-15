@@ -17,6 +17,19 @@ func _ready() -> void:
 	#http_request.request(BASE_URL) # 여기 부분을 변경하면 된다.
 	#print("서버에 데이터 요청 중...")
 	
+	# JavaScript Bridge가 이 노드의 'receive_assets'함수를 호출하도록 연결
+	JavaScriptBridge.eval(
+		"window.receive_assets = function(json_data) {" + 
+		"   var game_root = document.getElementById('canvas')._godot_engine;" +
+		"   if (game_root) {" +
+		"      game_root.get_node(\"/root/YourRootNodeName\").call(\"receive_assets\", json_data);" + 
+		"   }" +
+        "}"
+	)
+	
+	# JS 호출을 위해 함수를 Engine 싱글톤에 연결 ( 자금 관련 )
+	Engine.get_singleton("JavaScriptBridge").set_indexed("eval", "window.receive_assets = function(data) { get_node(\".\").call(\"receive_assets\", data); }")	
+
 	var db_data = [
 		{"id": 1, "name": "삼성전자", "price": 700000},
 		{"id": 2, "name": "SK하이닉스", "price": 1200000},
@@ -87,22 +100,29 @@ func _on_money_button_pressed() -> void:
 	
 func receive_assets(json_data):
 	print("JS로부터 데이터 수신됨:", json_data)
-	# 1. JSON 문자열 파싱
-	var data = JSON.parse_string(json_data)
-	if data:
-		var _member_id = data.memberId
+	
+	# 1. JSON 문자열 파싱 (Godot 4.x 파싱 방식 적용)
+	var result = JSON.parse_string(json_data)
+	
+	if result.error != OK:
+		print("JSON 파싱 오류가 발생했습니다. 에러:", result.error_string)
+		return # 파싱 실패시 종료
 		
+	var data = result.result # 실제 데이터를 얻는다.
+	
+	if typeof(data) == TYPE_DICTIONARY:
+		# var _member_id = data.memberId
 		var property = data.property
-		var pt = data.pt # ⬅️ 포인트 필드 추출!
+		var pt = data.pt
 		
 		print("Spring Boot로부터 받은 자산: ", property)
-		print("Spring Boot로부터 받은 포인트: ", pt) # ⬅️ 포인트 출력
+		print("Spring Boot로부터 받은 포인트: ", pt)
 		
-		get_node("Money/Money_Overlay/Money_Screen/VBoxContainer/MoneyLabel").text = str(property)
-		get_node("Money/Money_Overlay/Money_Screen/VBoxContainer/PointLabel").text = str(pt)
-		
+		# @onready 변수 사용
+		money_label.text = "1111111"
+				
 	else:
-		print("JSON 파싱 오류가 발생했습니다.")
+		print("수신된 데이터가 Dictionary 형태가 아닙니다.")
 
 
 # Setting 화면 활성화
