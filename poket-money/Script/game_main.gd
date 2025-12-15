@@ -1,7 +1,6 @@
 extends Node
 @export var button_scene: PackedScene
 @onready var list_container = $Companys_Container/Company_list_Container/Company_Container
-@onready var http_request = $HTTPRequest
 @onready var money_label = $Money/Money_Overlay/Money_Screen/VBoxContainer/MoneyLabel
 @onready var point_label = $Money/Money_Overlay/Money_Screen/VBoxContainer/PointLabel
 
@@ -102,25 +101,24 @@ func receive_assets(json_data):
 	print("JS로부터 데이터 수신됨:", json_data)
 	
 	# 1. JSON 문자열 파싱 (Godot 4.x 파싱 방식 적용)
-	var result = JSON.parse_string(json_data)
+	var data = JSON.parse_string(json_data)
 	
-	if result.error != OK:
-		print("JSON 파싱 오류가 발생했습니다. 에러:", result.error_string)
-		return # 파싱 실패시 종료
-		
-	var data = result.result # 실제 데이터를 얻는다.
-	
+	if data == null:
+		print("JSON 파싱 실패")
+		return
+			
 	if typeof(data) == TYPE_DICTIONARY:
 		# var _member_id = data.memberId
-		var property = data.property
-		var pt = data.pt
+		var property = data.get("property", 0)
+		var pt = data.get("pt", 0)
 		
 		print("Spring Boot로부터 받은 자산: ", property)
 		print("Spring Boot로부터 받은 포인트: ", pt)
 		
-		# @onready 변수 사용
-		money_label.text = "1111111"
-				
+		# UI에 문자 출력
+		money_label.text = str(property)
+		point_label.text = str(pt)
+
 	else:
 		print("수신된 데이터가 Dictionary 형태가 아닙니다.")
 
