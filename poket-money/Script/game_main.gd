@@ -16,11 +16,18 @@ extends Node
 @onready var popup_sell_btn = $buysell/Panel/SellButton
 @onready var popup_cancel_btn = $buysell/Panel/CancelButton
 
+# 📌 [그래프] 관련 노드 (사진에 맞춰 경로 수정됨)
+# CompanyGraph -> GraphFrame -> GraphLine 구조라고 가정
+@onready var graph_bg = $CompanyGraph/GraphFrame
+@onready var graph_line = $CompanyGraph/GraphFrame/GraphLine 
+
+# 전역 변수
 var cached_company_list = []
 
-# 📌 자바스크립트 콜백 참조 변수 (메모리 해제 방지용)
+# 콜백 참조 변수 (메모리 해제 방지)
 var _js_company_list_callback = null
 var _js_assets_callback = null
+var _js_price_history_callback = null # 그래프용 콜백
 
 func _ready() -> void:
 	trade_popup.visible = false
@@ -33,69 +40,113 @@ func _ready() -> void:
 	if not popup_cancel_btn.pressed.is_connected(_on_cancel_button_pressed):
 		popup_cancel_btn.pressed.connect(_on_cancel_button_pressed)
 
-	# 📌 [핵심 해결책] JavaScriptBridge Callback 방식 사용
-	# 경로를 찾을 필요 없이 Godot 함수를 직접 자바스크립트 변수에 할당합니다.
-	
-	# 2-1. 회사 목록 수신용 콜백 생성
-	_js_company_list_callback = JavaScriptBridge.create_callback(_on_js_receive_company_list)
+	# 📌 2. 자바스크립트 인터페이스 가져오기 (여기서 한 번만 선언!)
 	var window = JavaScriptBridge.get_interface("window")
-	# 기존 window.receive_company_list 함수를 내 콜백으로 덮어씌움
+	
+	# 3. 콜백 연결 (회사 목록)
+	_js_company_list_callback = JavaScriptBridge.create_callback(_on_js_receive_company_list)
 	window.receive_company_list = _js_company_list_callback
 	
-	# 2-2. 자산(Assets) 수신용 콜백 생성
+	# 4. 콜백 연결 (자산 정보)
 	_js_assets_callback = JavaScriptBridge.create_callback(_on_js_receive_assets)
 	window.receive_assets = _js_assets_callback
 	
-	print(">>> [DEBUG] JS 함수 강제 덮어쓰기 완료 (Callback 방식)")
+	# 5. 📌 [그래프] 콜백 연결 (주가 기록)
+	_js_price_history_callback = JavaScriptBridge.create_callback(_on_js_receive_price_history)
+	window.receive_price_history = _js_price_history_callback
 	
-	# 3. 데이터 요청
+	print(">>> [DEBUG] JS 콜백 연결 완료")
+	
+	# 6. 초기 데이터 요청
 	JavaScriptBridge.eval("getCompanyListToGodot()")
 	JavaScriptBridge.eval("getMemberAssetsToGodot()")
 
-# 📌 [콜백 함수 1] 자바스크립트가 회사 목록을 보내면 이 함수가 바로 실행됨
+# 📌 [그래프] 회사 버튼 클릭 시 실행 (그래프 데이터 요청)
+func _on_company_selected(data):
+	# 1. 회사 ID 가져오기
+	var co_id = data.get("coNum", data.get("id", null))
+	
+	if co_id != null:
+		print(">>> [그래프] ID:", co_id, " 데이터 요청")
+		JavaScriptBridge.eval("getCompanyPriceHistoryToGodot(" + str(co_id) + ")")
+
+# 📌 [그래프] 데이터 수신 및 그리기 (콜백)
+func _on_js_receive_price_history(args):
+	var json_data = args[0]
+	var price_list = []
+	
+	# 데이터 파싱
+	if typeof(json_data) == TYPE_STRING:
+		var parsed = JSON.parse_string(json_data)
+		if typeof(parsed) == TYPE_ARRAY: price_list = parsed
+	elif typeof(json_data) == TYPE_ARRAY:
+		price_list = json_data
+		
+	print(">>> [그래프] 데이터 수신. 개수: ", price_list.size())
+	draw_graph(price_list)
+
+# 📌 [그래프] 실제 그리기 로직
+func draw_graph(prices: Array):
+	if graph_line == null: 
+		print("!!! [오류] GraphLine 노드를 찾을 수 없습니다.")
+		return
+		
+	if prices.size() < 2: return
+		
+	graph_line.clear_points() # 기존 선 지우기
+	
+	# 최대/최소 가격 찾기
+	var min_p = prices[0]
+	var max_p = prices[0]
+	for p in prices:
+		if p < min_p: min_p = p
+		if p > max_p: max_p = p
+		
+	if min_p == max_p:
+		max_p += 100
+		min_p -= 100
+		
+	# 그래프 크기 및 좌표 계산
+	var width = graph_bg.size.x
+	var height = graph_bg.size.y
+	var margin = 20
+	
+	for i in range(prices.size()):
+		var price = prices[i]
+		var ratio_x = float(i) / float(prices.size() - 1)
+		var x = margin + (ratio_x * (width - margin * 2))
+		
+		var ratio_y = float(price - min_p) / float(max_p - min_p)
+		var y = (height - margin) - (ratio_y * (height - margin * 2))
+		
+		graph_line.add_point(Vector2(x, y))
+
+# --- 기존 매수/매도 및 기타 로직 (그대로 유지) ---
+
 func _on_js_receive_company_list(args):
-	# args[0]에 자바스크립트가 보낸 데이터가 들어있음
-	print(">>> [DEBUG] Godot 콜백 함수 실행됨! 데이터 수신 성공")
-	
-	var json_data = args[0] # JS 객체 또는 JSON 문자열
+	var json_data = args[0]
 	var company_list = []
-	
-	# JS 객체(Array)로 바로 들어오는 경우 (Godot 4 자동 변환)
-	if typeof(json_data) == TYPE_ARRAY:
-		company_list = json_data
-	# JSON 문자열로 들어오는 경우
+	if typeof(json_data) == TYPE_ARRAY: company_list = json_data
 	elif typeof(json_data) == TYPE_STRING:
 		var parsed = JSON.parse_string(json_data)
-		if typeof(parsed) == TYPE_ARRAY:
-			company_list = parsed
-		elif typeof(parsed) == TYPE_DICTIONARY and parsed.has("result"):
-			company_list = parsed.result
+		if typeof(parsed) == TYPE_ARRAY: company_list = parsed
 			
-	# 데이터 처리
 	if company_list.size() > 0:
 		cached_company_list = company_list
 		create_company_buttons(company_list)
-		if trade_popup.visible:
-			_refresh_dropdown()
-		print(">>> [성공] 회사 목록 로드 완료. 개수: ", company_list.size())
-	else:
-		print("!!! [오류] 데이터 형식을 알 수 없음: ", json_data)
+		if trade_popup.visible: _refresh_dropdown()
 
-# 📌 [콜백 함수 2] 자산 정보 수신
 func _on_js_receive_assets(args):
 	var data = args[0]
-	# 문자열이면 파싱, 아니면 바로 사용
 	if typeof(data) == TYPE_STRING:
 		var parsed = JSON.parse_string(data)
 		if parsed: data = parsed
-		
 	if typeof(data) == TYPE_DICTIONARY:
 		var money = data.get("property", 0)
 		var point = data.get("pt", 0)
 		if money_label: money_label.text = str(money) + " 원"
 		if point_label: point_label.text = str(point) + " P"
 
-# 📌 버튼 생성
 func create_company_buttons(company_list):
 	if list_container == null: return
 	for child in list_container.get_children(): child.queue_free()
@@ -104,19 +155,18 @@ func create_company_buttons(company_list):
 		var btn = button_scene.instantiate()
 		list_container.add_child(btn)
 		
-		# 버튼 텍스트 설정
-		if btn is Button:
-			btn.text = data.get("coName", data.get("name", "이름없음"))
-		if btn.has_method("setup"):
-			btn.setup(data)
+		# 버튼 설정
+		if btn.has_method("setup"): btn.setup(data)
+		# 📌 버튼 클릭 신호를 _on_company_selected 함수와 연결!
+		if btn.has_signal("company_selected"):
+			if not btn.company_selected.is_connected(_on_company_selected):
+				btn.company_selected.connect(_on_company_selected)
 			
 		if btn is Control:
 			btn.size_flags_horizontal = Control.SIZE_FILL | Control.SIZE_EXPAND
 			btn.custom_minimum_size = Vector2(0, 60)
-			
 	list_container.call_deferred("queue_sort")
 
-# 📌 드롭다운 갱신
 func _refresh_dropdown():
 	company_dropdown.clear()
 	if cached_company_list.size() == 0:
@@ -131,7 +181,6 @@ func _refresh_dropdown():
 		company_dropdown.set_item_metadata(index, co_id)
 		index += 1
 
-# 팝업 및 거래 로직
 func _on_trade_pressed() -> void:
 	$buysell.visible = true
 	amount_input.text = ""
@@ -142,21 +191,15 @@ func _process_trade(type: String):
 	var idx = company_dropdown.get_selected_id()
 	var co_id = company_dropdown.get_item_metadata(idx)
 	var amount = int(amount_input.text)
-	
 	if co_id == null: return
-	
-	# 서버 전송
 	JavaScriptBridge.eval("sendTradeRequest('%s', %d, %d)" % [type, int(co_id), amount])
 	trade_popup.visible = false
 
-# 버튼 연결 함수들
 func _on_buy_button_pressed(): _process_trade("BUY")
 func _on_sell_button_pressed(): _process_trade("SELL")
 func _on_cancel_button_pressed(): trade_popup.visible = false
 
 # 빈 함수들
-func _on_company_selected(data): pass
-func _process(delta): pass
 func _on_money_button_pressed(): $Money.visible = true
 func _on_money_cancel_button_pressed(): $Money.visible = false
 func hide_tutorial(): pass
@@ -166,5 +209,3 @@ func _on_setting_cancel_pressed(): pass
 func _on_save_and_exit_pressed(): pass
 func _on_news_button_pressed(): pass
 func _on_hint_button_pressed(): pass
-func _on_news_cancel_button_pressed(): pass
-func _on_magam_button_pressed(): pass

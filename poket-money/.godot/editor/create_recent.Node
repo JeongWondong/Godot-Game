@@ -1,3 +1,4 @@
+Line2D
 Label
 Button
 LineEdit
@@ -5,7 +6,6 @@ OptionButton
 Panel
 Control
 ColorRect
-Line2D
 HBoxContainer
 VBoxContainer
 CanvasLayer

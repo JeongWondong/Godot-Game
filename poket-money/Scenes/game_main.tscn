@@ -527,6 +527,10 @@ theme_override_constants/separation = 20
 custom_minimum_size = Vector2(0, 450)
 layout_mode = 2
 
+[node name="GraphLine" type="Line2D" parent="Graph_Container/VBoxContainer/GraphFrame"]
+width = 2.0
+default_color = Color(0.570549, 0.9991794, 0.76569456, 1)
+
 [node name="HBoxContainer" type="HBoxContainer" parent="Graph_Container/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 15
@@ -1082,12 +1086,6 @@ theme_override_font_sizes/font_size = 24
 text = "Time"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="Line2D" type="Line2D" parent="."]
-position = Vector2(-17882.402, -12227.073)
-scale = Vector2(41.800007, 21.150036)
-points = PackedVector2Array(448, 597)
-width = 1.0
 
 [node name="buysell" type="Control" parent="."]
 visible = false
