@@ -1,8 +1,8 @@
 extends Node
 @export var button_scene: PackedScene
 @onready var list_container = $Companys_Container/Company_list_Container/Company_Container
-@onready var money_label = $Money/Money_Overlay/Money_Screen/VBoxContainer/MoneyLabel
-@onready var point_label = $Money/Money_Overlay/Money_Screen/VBoxContainer/PointLabel
+@onready var money_label = $Money/control/panel/VBoxContainer/MoneyLabel
+@onready var point_label = $Money/control/panel/VBoxContainer/PointLabel 	
 
 const BASE_URL = "http://127.0.0.1:8080"
 
@@ -16,25 +16,33 @@ func _ready() -> void:
 	#http_request.request(BASE_URL) # 여기 부분을 변경하면 된다.
 	#print("서버에 데이터 요청 중...")
 	
-	# JavaScript Bridge가 이 노드의 'receive_assets'함수를 호출하도록 연결
+	# print(">>> [DEBUG] 현재 스크립트 노드의 절대 경로:", self.get_path())
+	
+	## JavaScript Bridge가 이 노드의 'receive_assets'함수를 호출하도록 연결
 	JavaScriptBridge.eval(
 		"window.receive_assets = function(json_data) {" + 
-		"   var game_root = document.getElementById('canvas')._godot_engine;" +
-		"   if (game_root) {" +
-		"      game_root.get_node(\"/root/YourRootNodeName\").call(\"receive_assets\", json_data);" + 
-		"   }" +
-        "}"
+		"  var game_root = document.getElementById('canvas')._godot_engine;" +
+		"  if (game_root) {" +
+		# 📌 경로를 다시 /root/game_main으로 지정합니다.
+		"    game_root.get_node(\"/root/game_main\").call(\"receive_assets\", json_data);" + 
+		"  }" +
+		"}"
 	)
 	
-	# JS 호출을 위해 함수를 Engine 싱글톤에 연결 ( 자금 관련 )
-	Engine.get_singleton("JavaScriptBridge").set_indexed("eval", "window.receive_assets = function(data) { get_node(\".\").call(\"receive_assets\", data); }")	
-
-	var db_data = [
-		{"id": 1, "name": "삼성전자", "price": 700000},
-		{"id": 2, "name": "SK하이닉스", "price": 1200000},
-		{"id": 3, "name": "네이버", "price": 200000},
-	]
-	create_company_buttons(db_data)
+	# 📌 회사 목록을 수신할 함수를 JavaScript Bridge에 등록
+	JavaScriptBridge.eval(
+		"window.receive_company_list = function(json_data) {" + 
+		"  var game_root = document.getElementById('canvas')._godot_engine;" +
+		"  if (game_root) {" +
+		"    game_root.get_node(\"/root/game_main\").call(\"receive_company_list\", json_data);" + 
+		"  }" +
+		"}"
+	)
+	
+	# 📌 서버 API 호출
+	JavaScriptBridge.eval("getCompanyListToGodot()")
+	print("서버에 회사 목록 데이터 요청 중...")
+	
 	
 ## 서버에서 응답이 왔을 때 실행되는 함수
 #func _on_request_completed(result, response_code, headers, body):
@@ -94,33 +102,49 @@ func _on_money_cancel_button_pressed() -> void:
 
 # 보유 자금 화면 활성화/비활성화
 func _on_money_button_pressed() -> void:
+	print("Money 버튼 눌림")
 	$Money.visible = true
 	JavaScriptBridge.eval("getMemberAssetsToGodot()")
 	
 func receive_assets(json_data):
-	print("JS로부터 데이터 수신됨:", json_data)
+	# 함수 실행 여부를 즉시 확인(브라우저 콘솔 확인)
+	print(">>> [DEBUG] receive_assets 함수 실행 시작 <<<")
 	
 	# 1. JSON 문자열 파싱 (Godot 4.x 파싱 방식 적용)
-	var data = JSON.parse_string(json_data)
+	var result = JSON.parse_string(json_data)
 	
-	if data == null:
-		print("JSON 파싱 실패")
+	if result.error != OK:
+		print("!!! [ERROR-GD] JSON 파싱 오류:", result.error_string)
 		return
-			
+		
+	var data = result.result
+	
 	if typeof(data) == TYPE_DICTIONARY:
-		# var _member_id = data.memberId
+		
 		var property = data.get("property", 0)
 		var pt = data.get("pt", 0)
 		
-		print("Spring Boot로부터 받은 자산: ", property)
-		print("Spring Boot로부터 받은 포인트: ", pt)
+		print(">>> [DEBUG-GD] 수신된 자산:", property)
 		
-		# UI에 문자 출력
-		money_label.text = str(property)
-		point_label.text = str(pt)
-
+		# 📌 2. CRITICAL CHECK: UI 노드 참조 확인
+		if money_label == null:
+			print("!!! [CRITICAL ERROR-GD] money_label 노드 참조 실패! 경로 오류.")
+			# 📌 이 코드가 브라우저 콘솔에 떠야 합니다!
+			print("!!! [DEBUG] money_label 예상 경로:", $Money/Money_Overlay/Money_Screen/VBoxContainer/MoneyLabel.get_path())
+			return
+		if point_label == null:
+			print("!!! [CRITICAL ERROR-GD] point_label 노드 참조 실패! 경로 오류.")
+			return
+		
+		# 📌 3. UI 업데이트: set_deferred 유지
+		money_label.set_deferred("text", str(property))
+		point_label.set_deferred("text", str(pt))
+		
+		# 시각적 확인 (Label이 화면에 존재한다면 빨간색으로 변해야 함)
+		money_label.set_deferred("modulate", Color.RED)
+		
 	else:
-		print("수신된 데이터가 Dictionary 형태가 아닙니다.")
+		print("!!! [ERROR-GD] 수신된 데이터가 Dictionary 형태가 아닙니다. 타입:", typeof(data))
 
 
 # Setting 화면 활성화
@@ -151,3 +175,24 @@ func _on_hint_button_pressed() -> void:
 func _on_news_cancel_button_pressed() -> void:
 	$News.visible = false # 뉴스 비활성화
 	$Hint.visible = false # 힌트 비활성화
+
+# 📌 DB에서 받은 회사 목록 데이터를 처리하는 새로운 함수
+func receive_company_list(json_data):
+	print(">>> [DEBUG-GD] 회사 목록 데이터 수신됨 <<<")
+	
+	# JSON 문자열 파싱
+	var result = JSON.parse_string(json_data)
+	
+	if result.error != OK:
+		print("!!! [ERROR-GD] 회사 목록 JSON 파싱 오류:", result.error_string)
+		return
+		
+	var company_list = result.result
+	
+	if typeof(company_list) == TYPE_ARRAY:
+		print(">>> [DEBUG-GD] 회사 목록 개수:", company_list.size())
+		
+		# 기존 함수를 재사용하여 버튼 생성
+		create_company_buttons(company_list)
+	else:
+		print("!!! [ERROR-GD] 수신된 데이터가 Array 형태가 아닙니다. 서버 응답 확인 필요.")

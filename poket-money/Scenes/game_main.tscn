@@ -370,7 +370,7 @@ shadow_color = Color(1, 1, 1, 0.6)
 shadow_size = 1
 shadow_offset = Vector2(4, 4)
 
-[node name="GameMain" type="Control"]
+[node name="game_main" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -589,7 +589,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.29803923)
 
-[node name="Money_Overlay" type="Control" parent="Money"]
+[node name="control" type="Control" parent="Money"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -597,7 +597,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Money_Screen" type="Panel" parent="Money/Money_Overlay"]
+[node name="panel" type="Panel" parent="Money/control"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -612,7 +612,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xe1id")
 
-[node name="Money_cancel_button" type="Button" parent="Money/Money_Overlay/Money_Screen"]
+[node name="Money_cancel_button" type="Button" parent="Money/control/panel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.95100003
@@ -628,7 +628,7 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_h337q")
 theme_override_styles/normal = SubResource("StyleBoxFlat_2sb4r")
 
-[node name="Money_cancel_label" type="Label" parent="Money/Money_Overlay/Money_Screen/Money_cancel_button"]
+[node name="Money_cancel_label" type="Label" parent="Money/control/panel/Money_cancel_button"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -647,7 +647,7 @@ text = "X"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Money/Money_Overlay/Money_Screen"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Money/control/panel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.5
@@ -660,11 +660,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 30
 
-[node name="MoneyLabel" type="Label" parent="Money/Money_Overlay/Money_Screen/VBoxContainer"]
+[node name="MoneyLabel" type="Label" parent="Money/control/panel/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
 
-[node name="PointLabel" type="Label" parent="Money/Money_Overlay/Money_Screen/VBoxContainer"]
+[node name="PointLabel" type="Label" parent="Money/control/panel/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
 
@@ -1106,12 +1106,23 @@ text = "Low"
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
 
+[node name="my_money" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.057000004
+offset_left = 744.0
+offset_bottom = -0.040000916
+grow_horizontal = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="pressed" from="Buttons_Container/News_button" to="." method="_on_news_button_pressed"]
 [connection signal="pressed" from="Buttons_Container/Tutorial_button" to="." method="_on_tutorial_button_pressed"]
 [connection signal="pressed" from="Buttons_Container/Hint_button" to="." method="_on_hint_button_pressed"]
 [connection signal="pressed" from="Buttons_Container/Money_button" to="." method="_on_money_button_pressed"]
 [connection signal="pressed" from="Buttons_Container/Setting_button" to="." method="_on_setting_button_pressed"]
-[connection signal="pressed" from="Money/Money_Overlay/Money_Screen/Money_cancel_button" to="." method="_on_money_cancel_button_pressed"]
+[connection signal="pressed" from="Money/control/panel/Money_cancel_button" to="." method="_on_money_cancel_button_pressed"]
 [connection signal="pressed" from="Setting_Menu/Setting_menu_overlay/Setting_background/Save_and_exit" to="." method="_on_save_and_exit_pressed"]
 [connection signal="pressed" from="Setting_Menu/Setting_menu_overlay/Setting_background/Setting_cancel" to="." method="_on_setting_cancel_pressed"]
 [connection signal="pressed" from="News/News_cancel_button" to="." method="_on_news_cancel_button_pressed"]
