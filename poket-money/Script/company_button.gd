@@ -20,7 +20,13 @@ signal company_selected(data)
 
 func setup(data):
 	company_data = data
-	text = data["name"] # 버튼의 글자를 회사 이름으로 변경
+	
+	# 📌 DB/JSON에서 수신된 키 이름(coName)을 정확하게 사용합니다.
+	if data.has("coName"):
+		text = data["coName"]
+	else:
+		# 혹시 키가 다를 경우를 대비한 디버깅
+		text = "키 오류: " + str(data)
 
 func _on_pressed():
 	# 클릭되면 내 데이터를 담아서 신호를 보냄

@@ -1,2 +1,5 @@
 res://Scenes/game_main.tscn
 res://Script/game_main.gd
+res://Script/company_button.gd
+res://Scenes/buysellpopup.tscn
+res://Scenes/buysellpopup.gd

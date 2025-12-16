@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://b5qq1u0xuli4u"]
+[gd_scene load_steps=52 format=3 uid="uid://b5qq1u0xuli4u"]
 
 [ext_resource type="FontFile" uid="uid://m5iv4ymu86ip" path="res://Font/ari_w9500/ari-w9500-bold.ttf" id="1_h337q"]
 [ext_resource type="Script" uid="uid://cahrtaqw8d4y4" path="res://Script/game_main.gd" id="1_y0gf2"]
@@ -211,34 +211,6 @@ shadow_color = Color(1, 1, 1, 0.6)
 shadow_size = 1
 shadow_offset = Vector2(1, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p76c0"]
-bg_color = Color(0.14509805, 0.14509805, 0.14509805, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-shadow_color = Color(1, 1, 1, 0.6)
-shadow_size = 1
-shadow_offset = Vector2(1, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e82n8"]
-bg_color = Color(0.14509805, 0.14509805, 0.14509805, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-expand_margin_top = 1.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h7flw"]
-bg_color = Color(0.18431373, 0.18431373, 0.18431373, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-shadow_color = Color(1, 1, 1, 0.6)
-shadow_size = 1
-shadow_offset = Vector2(1, 1)
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xe1id"]
 bg_color = Color(0, 0, 0, 1)
 corner_radius_top_left = 20
@@ -369,6 +341,11 @@ corner_radius_bottom_left = 10
 shadow_color = Color(1, 1, 1, 0.6)
 shadow_size = 1
 shadow_offset = Vector2(4, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_33ffc"]
+bg_color = Color(0.18431373, 0.18431373, 0.18431373, 1)
+shadow_color = Color(1, 1, 1, 0.6)
+shadow_size = 2
 
 [node name="game_main" type="Control"]
 layout_mode = 3
@@ -554,8 +531,8 @@ layout_mode = 2
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="Button" type="Button" parent="Graph_Container/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(420, 60)
+[node name="trade" type="Button" parent="Graph_Container/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(858, 60)
 layout_mode = 2
 focus_mode = 0
 theme_override_colors/font_hover_color = Color(0.9411765, 0.9019608, 0.54901963, 1)
@@ -564,19 +541,7 @@ theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxFlat_kwklr")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_sx5lm")
 theme_override_styles/hover = SubResource("StyleBoxFlat_a6kxu")
-text = "매 수"
-
-[node name="Button2" type="Button" parent="Graph_Container/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(420, 0)
-layout_mode = 2
-focus_mode = 0
-theme_override_colors/font_hover_color = Color(0.9411765, 0.9019608, 0.54901963, 1)
-theme_override_fonts/font = ExtResource("2_6n8b6")
-theme_override_font_sizes/font_size = 20
-theme_override_styles/normal = SubResource("StyleBoxFlat_p76c0")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_e82n8")
-theme_override_styles/hover = SubResource("StyleBoxFlat_h7flw")
-text = "매 도"
+text = "매 수 / 매 도"
 
 [node name="Money" type="CanvasLayer" parent="."]
 visible = false
@@ -1104,27 +1069,149 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_4jqiw")
 theme_override_styles/hover = SubResource("StyleBoxFlat_q8px1")
 text = "Low"
 
-[node name="HTTPRequest" type="HTTPRequest" parent="."]
-
-[node name="my_money" type="Label" parent="."]
+[node name="time" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 0.057000004
-offset_left = 744.0
-offset_bottom = -0.040000916
+offset_left = 625.0
+offset_right = -31.0
+offset_bottom = 68.96
 grow_horizontal = 2
+theme_override_font_sizes/font_size = 24
+text = "Time"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Line2D" type="Line2D" parent="."]
+position = Vector2(-17882.402, -12227.073)
+scale = Vector2(41.800007, 21.150036)
+points = PackedVector2Array(448, 597)
+width = 1.0
+
+[node name="buysell" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="buysell"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 189.0
+offset_top = 112.0
+offset_right = -191.0
+offset_bottom = -96.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_33ffc")
+
+[node name="Label" type="Label" parent="buysell/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.17
+offset_top = 24.0
+offset_bottom = -0.040000916
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_6n8b6")
+theme_override_font_sizes/font_size = 32
+text = "주식 거래"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CompanyOption" type="OptionButton" parent="buysell/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.215
+offset_left = 45.0
+offset_top = 124.0
+offset_right = -43.0
+offset_bottom = 78.92
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_6n8b6")
+
+[node name="AmountInput" type="LineEdit" parent="buysell/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.39100003
+offset_left = 50.0
+offset_top = 215.0
+offset_right = -46.0
+offset_bottom = 78.80798
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_6n8b6")
+placeholder_text = "금액을 입력해주세요."
+max_length = 20
+
+[node name="BuyButton" type="Button" parent="buysell/Panel"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 59.0
+offset_top = -183.0
+offset_right = -440.0
+offset_bottom = -121.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_6n8b6")
+theme_override_font_sizes/font_size = 20
+text = "매수"
+
+[node name="SellButton" type="Button" parent="buysell/Panel"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 477.0
+offset_top = -183.0
+offset_right = -49.0
+offset_bottom = -121.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_6n8b6")
+theme_override_font_sizes/font_size = 20
+text = "매도"
+
+[node name="CancelButton" type="Button" parent="buysell/Panel"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 61.0
+offset_top = -108.0
+offset_right = -50.0
+offset_bottom = -46.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_6n8b6")
+theme_override_font_sizes/font_size = 20
+text = "취소"
 
 [connection signal="pressed" from="Buttons_Container/News_button" to="." method="_on_news_button_pressed"]
 [connection signal="pressed" from="Buttons_Container/Tutorial_button" to="." method="_on_tutorial_button_pressed"]
 [connection signal="pressed" from="Buttons_Container/Hint_button" to="." method="_on_hint_button_pressed"]
 [connection signal="pressed" from="Buttons_Container/Money_button" to="." method="_on_money_button_pressed"]
 [connection signal="pressed" from="Buttons_Container/Setting_button" to="." method="_on_setting_button_pressed"]
+[connection signal="pressed" from="Buttons_Container/Magam_button" to="." method="_on_magam_button_pressed"]
+[connection signal="pressed" from="Graph_Container/VBoxContainer/HBoxContainer/trade" to="." method="_on_trade_pressed"]
 [connection signal="pressed" from="Money/control/panel/Money_cancel_button" to="." method="_on_money_cancel_button_pressed"]
 [connection signal="pressed" from="Setting_Menu/Setting_menu_overlay/Setting_background/Save_and_exit" to="." method="_on_save_and_exit_pressed"]
 [connection signal="pressed" from="Setting_Menu/Setting_menu_overlay/Setting_background/Setting_cancel" to="." method="_on_setting_cancel_pressed"]
 [connection signal="pressed" from="News/News_cancel_button" to="." method="_on_news_cancel_button_pressed"]
 [connection signal="pressed" from="Tutorial/Tutorial_Overlay/Panel/Button" to="." method="hide_tutorial"]
 [connection signal="pressed" from="Hint/News_cancel_button" to="." method="_on_news_cancel_button_pressed"]
+[connection signal="pressed" from="buysell/Panel/BuyButton" to="." method="_on_buy_button_pressed"]
+[connection signal="pressed" from="buysell/Panel/SellButton" to="." method="_on_sell_button_pressed"]
+[connection signal="pressed" from="buysell/Panel/CancelButton" to="." method="_on_cancel_button_pressed"]
