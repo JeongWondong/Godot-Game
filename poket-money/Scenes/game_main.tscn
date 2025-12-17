@@ -524,6 +524,7 @@ layout_mode = 2
 theme_override_constants/separation = 20
 
 [node name="GraphFrame" type="GraphFrame" parent="Graph_Container/VBoxContainer"]
+clip_contents = true
 custom_minimum_size = Vector2(0, 450)
 layout_mode = 2
 
@@ -631,11 +632,11 @@ theme_override_constants/separation = 30
 
 [node name="MoneyLabel" type="Label" parent="Money/control/panel/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 24
 
 [node name="PointLabel" type="Label" parent="Money/control/panel/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 24
 
 [node name="Setting_Menu" type="CanvasLayer" parent="."]
 visible = false
@@ -727,7 +728,6 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_r64ao")
 text = "취소"
 
 [node name="News" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="ColorRect" type="ColorRect" parent="News"]
 anchors_preset = 15
@@ -800,22 +800,12 @@ text = "TODAY  NEWS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="News_Title" type="Label" parent="News/News_Container/VBoxContainer"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-theme_override_colors/font_color = Color(0.3882353, 0.3882353, 0.3882353, 1)
-theme_override_fonts/font = ExtResource("2_6n8b6")
-theme_override_font_sizes/font_size = 32
-text = "뉴스 제목"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="News_Text" type="Label" parent="News/News_Container/VBoxContainer"]
 custom_minimum_size = Vector2(0, 280)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.3882353, 0.3882353, 0.3882353, 1)
 theme_override_fonts/font = ExtResource("2_6n8b6")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 24
 text = "뉴스 본문"
 horizontal_alignment = 1
 vertical_alignment = 1

@@ -18,8 +18,8 @@ extends Node
 
 # 📌 [그래프] 관련 노드 (사진에 맞춰 경로 수정됨)
 # CompanyGraph -> GraphFrame -> GraphLine 구조라고 가정
-@onready var graph_bg = $CompanyGraph/GraphFrame
-@onready var graph_line = $CompanyGraph/GraphFrame/GraphLine 
+@onready var graph_bg = $Graph_Container/VBoxContainer/GraphFrame
+@onready var graph_line = $Graph_Container/VBoxContainer/GraphFrame/GraphLine
 
 # 전역 변수
 var cached_company_list = []
@@ -202,10 +202,12 @@ func _on_cancel_button_pressed(): trade_popup.visible = false
 # 빈 함수들
 func _on_money_button_pressed(): $Money.visible = true
 func _on_money_cancel_button_pressed(): $Money.visible = false
-func hide_tutorial(): pass
-func _on_tutorial_button_pressed(): pass
-func _on_setting_button_pressed(): pass
-func _on_setting_cancel_pressed(): pass
+func hide_tutorial(): $Tutorial.visible = false
+func _on_tutorial_button_pressed(): $Tutorial.visible = true
+func _on_setting_button_pressed(): $Setting_Menu.visible = true
+func _on_setting_cancel_pressed(): $Setting_Menu.visible = false
 func _on_save_and_exit_pressed(): pass
-func _on_news_button_pressed(): pass
-func _on_hint_button_pressed(): pass
+func _on_news_button_pressed(): $News.visible = true
+func _on_hint_button_pressed(): $Hint.visible = true
+func _on_news_cancel_button_pressed(): $News.visible = false
+func _on_magam_button_pressed(): pass
